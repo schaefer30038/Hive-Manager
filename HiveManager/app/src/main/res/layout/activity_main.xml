@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/NewAccountEmail_PlainText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:text="Insert Email Address"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NewAccountPhone_PlainText" />
-
     <TextView
         android:id="@+id/Logic_TextView"
         android:layout_width="wrap_content"
@@ -83,7 +73,7 @@
         app:layout_constraintTop_toBottomOf="@+id/NewAccountUsername_PlainText" />
 
     <EditText
-        android:id="@+id/NewAccountAddr_PlainText"
+        android:id="@+id/NewAccountAddress_PlainText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -96,11 +86,38 @@
         android:id="@+id/NewAccountPhone_PlainText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="352dp"
         android:ems="10"
         android:inputType="phone"
         android:text="Insert Phone Number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/NewAccountUsername_PlainText" />
+
+    <EditText
+        android:id="@+id/NewAccountEmail_PlainText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:text="Insert Email Address"
+        app:layout_constraintStart_toEndOf="@+id/NewAccountPassword_PlainText"
+        app:layout_constraintTop_toBottomOf="@+id/NewAccountPhone_PlainText" />
+
+    <Button
+        android:id="@+id/CreateNewAccount_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="204dp"
+        android:layout_marginLeft="204dp"
+        android:layout_marginTop="88dp"
+        android:text="Create a new account"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NewAccountAddr_PlainText" />
+        app:layout_constraintTop_toBottomOf="@+id/NewAccountEmail_PlainText" />
 
     <Button
         android:id="@+id/Login_Button"
@@ -112,12 +129,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LoginPassword_PlainText" />
 
-    <Button
-        android:id="@+id/CreateNewAccount_Button"
+    <ImageView
+        android:id="@+id/IDProf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create a new account"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NewAccountEmail_PlainText" />
+        app:layout_constraintTop_toBottomOf="@+id/NewAccountAddress_PlainText"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/uploadPicture_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upload Picture"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IDProf" />
+
+    <Button
+        android:id="@+id/Upload_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upload"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="631dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
