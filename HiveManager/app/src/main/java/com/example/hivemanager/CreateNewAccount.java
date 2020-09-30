@@ -28,7 +28,8 @@ public class CreateNewAccount extends AppCompatActivity {
         newAccountAddress_PlainText = (EditText) findViewById(R.id.newAccountAddress_PlainText);
         newAccountPhone_PlainText = (EditText) findViewById(R.id.newAccountPhone_PlainText);
         newAccountEmail_PlainText = (EditText) findViewById(R.id.newAccountEmail_PlainText);
-
+        imageView = (ImageView) findViewById(R.id.IDProf);
+        imageView.setImageResource(R.drawable.bee1);
         Upload_Button = (Button) findViewById(R.id.upload_Button);
         Upload_Button.setOnClickListener(new View.OnClickListener() {
             @Override
