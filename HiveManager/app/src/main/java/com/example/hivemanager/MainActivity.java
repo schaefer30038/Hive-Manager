@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
     ImageView imageView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,8 +37,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 openGallery();
             }
         });
-
-
 
         LogicUsername_PlainText = (EditText) findViewById(R.id.LogicUsername_PlainText);
         LoginPassword_PlainText = (EditText) findViewById(R.id.LoginPassword_PlainText);
