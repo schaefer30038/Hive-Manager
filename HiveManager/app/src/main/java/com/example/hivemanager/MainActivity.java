@@ -27,18 +27,18 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-    Button Login_Button, CreateNewAccount_Button, Upload_Button;
+    Button Login_Button, CreateNewAccount_Button;
     EditText LogicUsername_PlainText,LoginPassword_PlainText;
     //ImageView uploadPicture_ImageView;
-    private static final int PICK_IMAGE = 100;
+
     public static final int GET_FROM_GALLERY = 3;
-    Uri imageUri;
-    ImageView imageView;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        imageView = (ImageView)findViewById(R.id.IDProf);
+
         Login_Button = (Button) findViewById(R.id.Login_Button);
         CreateNewAccount_Button = (Button) findViewById(R.id.CreateNewAccount_Button);
 
@@ -56,18 +56,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    private void openGallery() {
-        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-        startActivityForResult(gallery, PICK_IMAGE);
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE){
-            imageUri = data.getData();
-            imageView.setImageURI(imageUri);
-        }
-    }
+
+
 
 
 
