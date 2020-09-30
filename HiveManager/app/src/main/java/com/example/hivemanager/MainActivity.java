@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.Login_Button:
-                Intent intent = newIntent(MainActivity.this, SecondActivity.class);
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
                 startActivity(intent);
                 break;
             case R.id.CreateNewAccount_Button:
