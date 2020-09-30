@@ -33,9 +33,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginLeft="25dp"
-        android:ems="10"
+        android:ems="12"
         android:inputType="textPersonName"
-        android:text="Enter Username"
+        android:hint="Enter Username"
+        android:selectAllOnFocus="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Logic_TextView" />
 
@@ -45,9 +46,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginLeft="25dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Enter Password"
+        android:ems="12"
+        android:inputType="textPassword"
+        android:hint="Enter Password"
+        android:selectAllOnFocus="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LogicUsername_PlainText" />
 
