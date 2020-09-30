@@ -8,112 +8,121 @@
 
     <ImageView
         android:id="@+id/IDProf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="80dp"
-        android:layout_marginRight="80dp"
-        android:layout_marginBottom="224dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="176dp"
+        android:layout_height="146dp"
+        android:layout_marginTop="44dp"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/createNewAccount_TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="84dp"
-        android:text="Create a new account"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <EditText
         android:id="@+id/newAccountEmail_PlainText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_width="179dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="44dp"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:text="Insert Email Address"
+        android:text="Email Address"
+        android:src = "@drawable/ic_launcher_background"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.905"
+        app:layout_constraintHorizontal_bias="0.931"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newAccountPhone_PlainText" />
+        app:layout_constraintTop_toTopOf="@+id/newAccountPhone_PlainText"
+        app:layout_constraintVertical_bias="0.006" />
 
-    <TextView
-        android:id="@+id/uploadPicture_TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Upload Picture"
-        app:layout_constraintBottom_toTopOf="@+id/upload_Button"
+    <EditText
+        android:id="@+id/newAccountUsername_PlainText"
+        android:layout_width="170dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Username"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newAccountPassword_PlainText"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/newAccountPhone_PlainText" />
 
     <EditText
         android:id="@+id/newAccountPassword_PlainText"
         android:layout_width="170dp"
         android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:ems="10"
         android:inputType="textPassword"
         android:text="Insert Password"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newAccountUsername_PlainText" />
-
-    <EditText
-        android:id="@+id/newAccountUsername_PlainText"
-        android:layout_width="170dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="48dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Insert Username"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createNewAccount_TextView" />
+        app:layout_constraintTop_toTopOf="@+id/newAccountEmail_PlainText" />
 
     <Button
         android:id="@+id/createNewAccount_Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginBottom="104dp"
+        android:layout_marginBottom="4dp"
         android:text="Create a new account"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newAccountAddress_PlainText" />
 
     <EditText
         android:id="@+id/newAccountAddress_PlainText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="152dp"
+        android:layout_width="192dp"
+        android:layout_height="54dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Insert Appiary Address"
-        app:layout_constraintStart_toEndOf="@+id/newAccountUsername_PlainText"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Appiary Address"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newAccountPassword_PlainText"
+        app:layout_constraintVertical_bias="0.197" />
 
     <EditText
         android:id="@+id/newAccountPhone_PlainText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
+        android:layout_width="179dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:ems="10"
         android:inputType="phone"
-        android:text="Insert Phone Number"
-        app:layout_constraintStart_toEndOf="@+id/newAccountPassword_PlainText"
-        app:layout_constraintTop_toBottomOf="@+id/newAccountAddress_PlainText" />
+        android:text="Phone Number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/upload_Button" />
 
     <Button
         android:id="@+id/upload_Button"
+        android:layout_width="141dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="8dp"
+        android:text="Change Picture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IDProf" />
+
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
-        android:text="Upload"
+        android:background="#FFE2A2"
+        android:gravity="center|top"
+        android:text="Create an Account"
+        android:textColor="#000"
+
+        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+        android:textStyle="normal|bold"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newAccountPassword_PlainText" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
