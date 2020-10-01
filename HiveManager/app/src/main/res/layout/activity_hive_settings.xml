@@ -7,13 +7,130 @@
     tools:context=".HiveSettings">
 
     <TextView
+        android:id="@+id/hiveInfo_TextView"
+        android:layout_width="409dp"
+        android:layout_height="141dp"
+        android:autoText="false"
+        android:background="#FFE2A2"
+        android:clickable="false"
+        android:text="Hive Information"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+        android:textColor="@android:color/black"
+        android:textStyle="normal|bold"
+        app:autoSizeTextType="uniform"
+        app:drawableTint="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/test_TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="124dp"
-        android:layout_marginLeft="124dp"
-        android:layout_marginTop="240dp"
-        android:text="TextView"
+        android:layout_marginStart="160dp"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="208dp"
+        android:text="Name of Hive"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="266dp"
+        android:layout_height="456dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/username_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:inputType="textLongMessage"
+                android:text="Username:" />
+
+            <TextView
+                android:id="@+id/apiary_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="Apiary:" />
+
+            <TextView
+                android:id="@+id/hive_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="Hive Name:" />
+
+            <TextView
+                android:id="@+id/inspection_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="Inspection:" />
+
+            <TextView
+                android:id="@+id/health_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="Health:" />
+
+            <TextView
+                android:id="@+id/honey_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="Honey:" />
+
+            <TextView
+                android:id="@+id/queenProduction_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="Queen Production:" />
+
+            <TextView
+                android:id="@+id/equipHive_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="Equipment on the Hive:" />
+
+            <TextView
+                android:id="@+id/equipInven_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="Equipment in Inventory:" />
+
+            <TextView
+                android:id="@+id/loss_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="Loss:" />
+
+            <TextView
+                android:id="@+id/gain_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:text="Gain:" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/deleteHive_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete Hive"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hiveInfo_TextView" />
+
+    <Button
+        android:id="@+id/editHive_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Hive"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hiveInfo_TextView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
