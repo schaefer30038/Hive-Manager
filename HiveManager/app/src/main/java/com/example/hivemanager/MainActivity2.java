@@ -24,7 +24,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         ManageHive_Button = (Button) findViewById(R.id.ManageHive_Button);
         CreatePublicProfile_Button = (Button) findViewById(R.id.CreatePublicProfile_Button);
         Logout_Button = (Button) findViewById(R.id.Logout_Button);
-        viewProfile_Button = findViewById(R.id.ViewPublicProfile_Button);
+        viewProfile_Button = (Button)findViewById(R.id.ViewPublicProfile_Button);
 
         Logout_Button.setOnClickListener(this);
         ManageHive_Button.setOnClickListener(this);
