@@ -33,33 +33,6 @@ public class Hive extends AppCompatActivity {
         arrayList.add("testing");
         arrayList.add("this");
         arrayList.add("thing");
-        arrayList.add("testing");
-        arrayList.add("this");
-        arrayList.add("thing");
-        arrayList.add("testing");
-        arrayList.add("this");
-        arrayList.add("thing");
-        arrayList.add("testing");
-        arrayList.add("this");
-        arrayList.add("thing");
-        arrayList.add("testing");
-        arrayList.add("this");
-        arrayList.add("thing");
-        arrayList.add("testing");
-        arrayList.add("this");
-        arrayList.add("thing");
-        arrayList.add("testing");
-        arrayList.add("this");
-        arrayList.add("thing");
-        arrayList.add("testing");
-        arrayList.add("this");
-        arrayList.add("thing");
-        arrayList.add("testing");
-        arrayList.add("this");
-        arrayList.add("thing");
-        arrayList.add("testing");
-        arrayList.add("this");
-        arrayList.add("thing");
 
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
 
