@@ -1,6 +1,5 @@
 package com.example.hivemanager;
 
-import java.io.File;
 import java.sql.*;
 
 /**
@@ -70,16 +69,16 @@ public class SQLConnection {
     /**
      * This method is called when the user creates an account. It calls
      * createAccount stored procedure from the database to create the account.
-     *
      * @param username String for the user account
      * @param password String for the password
      * @param picture  Blob that refers to the picture uploaded by the user
      * @param apiary   String for the initial apiary address
      * @param email    String for the user's email
      * @param phone    String for the user's phone
+     * @return
      */
-    protected void createAccount(String username, String password, Blob picture, String apiary, String email,
-                                 String phone) {
+    protected String createAccount(String username, String password, Blob picture, String apiary, String email,
+                                   String phone) {
 
         try {
             // Query to initialize createAccount stored procedure in the database
@@ -105,6 +104,7 @@ public class SQLConnection {
         } catch (SQLException e) {
             System.out.println("createAccount: " + e.getMessage());
         }
+        return status;
 
     }
 
@@ -112,11 +112,11 @@ public class SQLConnection {
      * This method is called when the user tries to log in in the app. It calls
      * searchAccount stored procedure from the database to check if the user account
      * with the password exists.
-     *
      * @param username String variable for the user account
      * @param password String variable for the password
+     * @return
      */
-    protected void searchAccount(String username, String password) {
+    protected String searchAccount(String username, String password) {
         try {
             // Execute query to call searchAccount procedure
             cstmt = conn.prepareCall("call searchAccount(?,?,?)");
@@ -139,20 +139,22 @@ public class SQLConnection {
         } catch (SQLException e) {
             System.out.println("searchAccount: " + e.getMessage());
         }
+        return status;
     }
 
     /**
      * This method is called when the user updates the user's profile. It will
      * execute updateProfile stored procedure from the database to update the
      * profile of the user's account
-     *
      * @param username String for the user's account
      * @param picture  Blob format for the picture uploaded by the user
      * @param email    String for the user's email
      * @param phone    String for the user's phone
+     * @return
      */
-    protected void updateProfile(String username, Blob picture, String email, String phone) {
+    protected String updateProfile(String username, Blob picture, String email, String phone) {
 
+        String res = "fail";
         try {
             // Execute query to call updateProfile procedure
             cstmt = conn.prepareCall("call updateProfile(?, ?, ?, ?);");
@@ -162,9 +164,11 @@ public class SQLConnection {
             cstmt.setString(4, phone);
             cstmt.execute();
             System.out.println("Successfully updated profile");
+            res = "success";
         } catch (SQLException e) {
             System.out.println("updateProfile: " + e.getMessage());
         }
+        return res;
     }
 
     /**
@@ -190,7 +194,6 @@ public class SQLConnection {
      * This method is called when the user creates a hive into the database. It
      * calls createHive stored procedure to store the new information of new hive
      * into the database
-     *
      * @param username        String for the user account
      * @param apiary          String for the apiary address of hive
      * @param hive            String for the name of hive
@@ -202,9 +205,10 @@ public class SQLConnection {
      * @param equipinven      String for equipment in inventory
      * @param loss            int for losses
      * @param gain            int for gains
+     * @return
      */
-    protected void createHive(String username, String apiary, String hive, String inspection, String health,
-                              String honey, String queenproduction, String equiphive, String equipinven, int loss, int gain) {
+    protected String createHive(String username, String apiary, String hive, String inspection, String health,
+                                String honey, String queenproduction, String equiphive, String equipinven, int loss, int gain) {
 
         // Execute query to call createHive stored procedure
         try {
@@ -237,6 +241,7 @@ public class SQLConnection {
         } catch (SQLException e) {
             System.out.println("createHive: " + e.getMessage());
         }
+        return status;
 
     }
 
@@ -264,7 +269,6 @@ public class SQLConnection {
      * the apiary address and the name of the hive. It executes updateHive stored
      * procedure. It restricts the user to change the apiary adress and the name of
      * hive.
-     *
      * @param username        String for the user account
      * @param apiary          String for the apiary address of hive
      * @param hive            String for the name of hive
@@ -276,10 +280,12 @@ public class SQLConnection {
      * @param equipinven      String for equipment in inventory
      * @param loss            int for losses
      * @param gain            int for gains
+     * @return
      */
-    protected void updateHive(String username, String apiary, String hive, String inspection, String health,
-                              String honey, String queenproduction, String equiphive, String equipinven, int loss, int gain) {
+    protected String updateHive(String username, String apiary, String hive, String inspection, String health,
+                                String honey, String queenproduction, String equiphive, String equipinven, int loss, int gain) {
 
+        String res = "fail";
         // Execute query to call updateHive stored procedure
         try {
             cstmt = conn.prepareCall("call updateHive(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
@@ -297,9 +303,11 @@ public class SQLConnection {
             cstmt.executeUpdate();
 
             System.out.println("Successfully updated Hive");
+            res = "success";
         } catch (SQLException e) {
             System.out.println("updateHive: " + e.getMessage());
         }
+        return res;
 
     }
 
@@ -307,12 +315,13 @@ public class SQLConnection {
      * This method is called to delete a hive specified by the username, apiary
      * address, and the name of hive by executing a delteHive stored procedures in
      * the database.
-     *
      * @param username String for the user's account
      * @param apiary   String for the user's apiary address
      * @param hive     String for the name of hive
+     * @return
      */
-    protected void deleteHive(String username, String apiary, String hive) {
+    protected String deleteHive(String username, String apiary, String hive) {
+
         try {
             // Execute query to call deleteHive stored procedure
             cstmt = conn.prepareCall("call deleteHive(?, ?, ?, ?);");
@@ -333,6 +342,7 @@ public class SQLConnection {
         } catch (SQLException e) {
             System.out.println("Error in deleteHive: " + e.getMessage());
         }
+        return status;
     }
 
     /**
@@ -340,11 +350,11 @@ public class SQLConnection {
      * createApiary stored procedure. If there is a apiary with the same name, it
      * does not create the new apiary. If the user creates a apiary that is not
      * belong to the user, it does not create the new apiary.
-     *
      * @param username String for the user's account
      * @param apiary   String for the new apiary address
+     * @return
      */
-    protected void createApiary(String username, String apiary) {
+    protected String createApiary(String username, String apiary) {
         try {
             // Execute createApiary stored procedure
             cstmt = conn.prepareCall("call createApiary(?,?,?);");
@@ -365,6 +375,7 @@ public class SQLConnection {
         } catch (SQLException e) {
             System.out.println("createApiary: " + e.getMessage());
         }
+        return status;
     }
 
     /**
@@ -372,12 +383,12 @@ public class SQLConnection {
      * executes updateApiary stored procedure. It does not allow the user to change
      * non-existing apiary and to update a apiary to another apiary's name that
      * already exists.
-     *
      * @param username  String for the user account
      * @param oldpiary  String for the original name of apiary
      * @param newapiary String for the new name of apiary
+     * @return
      */
-    protected void updateApiary(String username, String oldpiary, String newapiary) {
+    protected String updateApiary(String username, String oldpiary, String newapiary) {
         try {
             // Execute updateApiary stored procedure
             cstmt = conn.prepareCall("call updateApiary(?, ?, ?, ?);");
@@ -400,15 +411,16 @@ public class SQLConnection {
         } catch (SQLException e) {
             System.out.println("updateApiary: " + e.getMessage());
         }
+        return status;
     }
 
     /**
      * This method is called when the user deletes the user's apiary.
-     *
      * @param username String for the user account
      * @param apiary   String for the user apiary
+     * @return
      */
-    protected void deleteApiary(String username, String apiary) {
+    protected String deleteApiary(String username, String apiary) {
         try {
             // Execute delteApiary stored procedure
             cstmt = conn.prepareCall("call deleteApiary(?, ?, ?);");
@@ -430,6 +442,7 @@ public class SQLConnection {
         } catch (SQLException e) {
             System.out.println("deleteApiary: " + e.getMessage());
         }
+        return status;
 
     }
 
