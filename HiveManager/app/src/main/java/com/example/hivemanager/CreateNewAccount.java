@@ -2,6 +2,7 @@ package com.example.hivemanager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,18 +17,21 @@ public class CreateNewAccount extends AppCompatActivity {
     Uri imageUri;
     ImageView imageView;
     Button Upload_Button;
+    Button createacc;
     EditText newAccountUsername_PlainText, newAccountPassword_PlainText,
             newAccountAddress_PlainText, newAccountPhone_PlainText,newAccountEmail_PlainText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_new_account);
-
+        AlertDialog.Builder b = new AlertDialog.Builder(CreateNewAccount.this);
+        createacc = findViewById(R.id.createNewAccount_Button);
         newAccountUsername_PlainText = (EditText) findViewById(R.id.newAccountUsername_PlainText);
         newAccountPassword_PlainText = (EditText) findViewById(R.id.newAccountPassword_PlainText);
         newAccountAddress_PlainText = (EditText) findViewById(R.id.newAccountAddress_PlainText);
         newAccountPhone_PlainText = (EditText) findViewById(R.id.newAccountPhone_PlainText);
         newAccountEmail_PlainText = (EditText) findViewById(R.id.newAccountEmail_PlainText);
+
         imageView = (ImageView) findViewById(R.id.IDProf);
         imageView.setImageResource(R.drawable.bee1);
         Upload_Button = (Button) findViewById(R.id.upload_Button);
@@ -37,7 +41,36 @@ public class CreateNewAccount extends AppCompatActivity {
                 openGallery();
             }
         });
+        createacc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Send user data to backend
+                sendData();
+            }
+        });
     }
+
+    private void sendData() {
+        String username = newAccountUsername_PlainText.getText().toString();
+        AlertDialog.Builder b = new AlertDialog.Builder(CreateNewAccount.this);
+        String pass = newAccountPassword_PlainText.getText().toString();
+        String adr = newAccountAddress_PlainText.getText().toString();
+        String phone = newAccountPhone_PlainText.getText().toString();
+        String email = newAccountEmail_PlainText.getText().toString();
+        if(username.equals("Username") || pass.equals("1") || adr.equals("") || phone.equals("") || email.equals("")){
+            //Display Error
+
+            b.setMessage("Please dont leave any field blank");
+        }
+        else{
+            // somehow send image as well??
+            // then pass data to backend
+            //send data to backend and go back to login page
+        }
+
+
+    }
+
     private void openGallery() {
         Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
         startActivityForResult(gallery, PICK_IMAGE);

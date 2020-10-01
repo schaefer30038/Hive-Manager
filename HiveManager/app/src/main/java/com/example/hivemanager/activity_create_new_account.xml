@@ -113,6 +113,7 @@
         android:background="#FFE2A2"
         android:gravity="center|top"
         android:text="Create an Account"
+        android:textColor="#000"
 
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         android:textStyle="normal|bold"
