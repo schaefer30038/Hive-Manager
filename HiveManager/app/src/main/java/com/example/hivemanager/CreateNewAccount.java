@@ -64,7 +64,7 @@ public class CreateNewAccount extends AppCompatActivity {
             //Send data to back end with photo
             new CreateAccountAsync().execute(username, encoder(pass), null, adr, email, phone);
 
-            // accMade will be "Success" if account is created and it will be "Exist" if account already exists
+            // TODO: accMade will be "Success" if account is created and it will be "Exist" if account already exists
 
             Intent intent2Main = new Intent(CreateNewAccount.this, MainActivity.class);
             startActivity(intent2Main);
