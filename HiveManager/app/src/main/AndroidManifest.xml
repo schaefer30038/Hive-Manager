@@ -18,6 +18,7 @@
         <activity android:name=".HiveSettings"></activity>
         <activity android:name=".CreateNewAccount" />
         <activity android:name=".CreatePublicProfile" />
+        <activity android:name=".ViewPublicProfile" />
         <activity android:name=".Hive" />
         <activity
             android:name=".MainActivity2"
