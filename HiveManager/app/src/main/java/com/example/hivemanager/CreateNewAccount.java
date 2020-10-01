@@ -25,7 +25,7 @@ public class CreateNewAccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_new_account);
         AlertDialog.Builder b = new AlertDialog.Builder(CreateNewAccount.this);
-        createacc = findViewById(R.id.createNewAccount_Button);
+
         newAccountUsername_PlainText = (EditText) findViewById(R.id.newAccountUsername_PlainText);
         newAccountPassword_PlainText = (EditText) findViewById(R.id.newAccountPassword_PlainText);
         newAccountAddress_PlainText = (EditText) findViewById(R.id.newAccountAddress_PlainText);
@@ -41,6 +41,7 @@ public class CreateNewAccount extends AppCompatActivity {
                 openGallery();
             }
         });
+        createacc = findViewById(R.id.createNewAccount_Button);
         createacc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,18 +58,11 @@ public class CreateNewAccount extends AppCompatActivity {
         String adr = newAccountAddress_PlainText.getText().toString();
         String phone = newAccountPhone_PlainText.getText().toString();
         String email = newAccountEmail_PlainText.getText().toString();
-        if(username.equals("Username") || pass.equals("1") || adr.equals("") || phone.equals("") || email.equals("")){
-            //Display Error
+        if(!(username.equals("Username") || pass.equals("1") || adr.equals("") || phone.equals("") || email.equals(""))){
+            //Send data to back end with photo
 
-            b.setMessage("Please dont leave any field blank");
+
         }
-        else{
-            // somehow send image as well??
-            // then pass data to backend
-            //send data to backend and go back to login page
-        }
-
-
     }
 
     private void openGallery() {

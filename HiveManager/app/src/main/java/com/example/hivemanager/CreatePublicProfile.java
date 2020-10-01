@@ -2,10 +2,12 @@ package com.example.hivemanager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -17,7 +19,7 @@ public class CreatePublicProfile extends AppCompatActivity {
     private static boolean  rslt,hlth,hny,qn,hve,invent,lss,gn = false;
     Uri imageUri;
     ImageView imageView;
-    Button Upload_Button;
+    Button Upload_Button,Create_Profile;
     CheckBox result,health,honey,queen,hiveequip,inventequip,losses,gains;
     EditText PublicProfileAddress_PlainText, PublicProfilePhone_PlainText, PublicProfileEmail_PlainText;
     @Override
@@ -33,6 +35,13 @@ public class CreatePublicProfile extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.IDProf);
         imageView.setImageResource(R.drawable.bee1);
         Upload_Button = (Button) findViewById(R.id.upload_Button);
+        Create_Profile = (Button) findViewById(R.id.CreatePublicProfile_Button) ;
+        Create_Profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendData();
+            }
+        });
         Upload_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,6 +120,24 @@ public class CreatePublicProfile extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void sendData() {
+
+        AlertDialog.Builder b = new AlertDialog.Builder(CreatePublicProfile.this);
+        //Somehow store one photo and send it
+        String phone = PublicProfilePhone_PlainText.getText().toString();
+        String email = PublicProfileEmail_PlainText.getText().toString();
+        String adr = PublicProfileAddress_PlainText.getText().toString();
+
+        //use bool values and pass to backend
+        if(!( adr.equals("") || phone.equals("") || email.equals("") ||email.equals("Email Address") || adr.equals("Apiary Address") || phone.equals("Phone Number") )){
+            //Display Error
+            // somehow send image as well??
+            // then pass data to backend
+            //send data to backend and go back to login page
+
+        }
     }
 
     private void openGallery() {
