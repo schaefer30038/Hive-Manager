@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity2 extends AppCompatActivity implements View.OnClickListener {
-    Button ManageApiaries_Button, ManageHive_Button, CreatePublicProfile_Button, Logout_Button;
+    Button ManageApiaries_Button, ManageHive_Button, CreatePublicProfile_Button, Logout_Button,viewProfile_Button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +24,12 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         ManageHive_Button = (Button) findViewById(R.id.ManageHive_Button);
         CreatePublicProfile_Button = (Button) findViewById(R.id.CreatePublicProfile_Button);
         Logout_Button = (Button) findViewById(R.id.Logout_Button);
+        viewProfile_Button = findViewById(R.id.ViewPublicProfile_Button);
 
         Logout_Button.setOnClickListener(this);
         ManageHive_Button.setOnClickListener(this);
         CreatePublicProfile_Button.setOnClickListener(this);
-
+        viewProfile_Button.setOnClickListener(this);
     }
 
     @Override
@@ -38,7 +39,6 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
                 Intent intent2MainActivity = new Intent(MainActivity2.this, MainActivity.class);
                 startActivity(intent2MainActivity);
                 break;
-
             case R.id.ManageHive_Button:
                 Intent intent2ManageHiveActivity = new Intent(MainActivity2.this, Hive.class);
                 startActivity(intent2ManageHiveActivity);
@@ -46,7 +46,10 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
             case R.id.CreatePublicProfile_Button:
                 Intent intent2CreatePublicProfile = new Intent(MainActivity2.this, CreatePublicProfile.class);
                 startActivity(intent2CreatePublicProfile);
-
+                break;
+            case R.id.ViewPublicProfile_Button:
+                Intent intent2ViewPublicProfile = new Intent(MainActivity2.this, ViewPublicProfile.class);
+                startActivity(intent2ViewPublicProfile);
                 break;
 
         }

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -58,11 +59,13 @@ public class CreateNewAccount extends AppCompatActivity {
         String adr = newAccountAddress_PlainText.getText().toString();
         String phone = newAccountPhone_PlainText.getText().toString();
         String email = newAccountEmail_PlainText.getText().toString();
-        if(!(username.equals("Username") || pass.equals("1") || adr.equals("") || phone.equals("") || email.equals(""))){
+        if(!(username.equals("") || pass.equals("") || adr.equals("") || phone.equals("") || email.equals(""))){
             //Send data to back end with photo
-
-
+            new CreateAccountAsync().execute(username, pass, null, adr, email, phone);
+            Intent intent2Main = new Intent(CreateNewAccount.this, MainActivity.class);
+            startActivity(intent2Main);
         }
+
     }
 
     private void openGallery() {
