@@ -10,7 +10,7 @@
         android:id="@+id/profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFE2A2"
+        android:background="#FFC107"
 
         android:gravity="center|top"
         android:padding="10sp"

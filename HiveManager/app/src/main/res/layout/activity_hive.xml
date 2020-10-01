@@ -23,7 +23,7 @@
         android:layout_width="409dp"
         android:layout_height="141dp"
         android:autoText="false"
-        android:background="#FFE2A2"
+        android:background="#FFC107"
         android:clickable="false"
         android:text="Select a Hive"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
