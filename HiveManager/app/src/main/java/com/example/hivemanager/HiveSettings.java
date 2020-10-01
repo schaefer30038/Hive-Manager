@@ -38,6 +38,9 @@ public class HiveSettings extends AppCompatActivity implements View.OnClickListe
         loss_TextView = (TextView)findViewById(R.id.loss_TextView);
         gain_TextView = (TextView)findViewById(R.id.gain_TextView);
 
+        // TODO set each TextView to display current hive information
+        //username_TextView.setText("");
+
         deleteHive_Button.setOnClickListener(this);
         editHive_Button.setOnClickListener(this);
 

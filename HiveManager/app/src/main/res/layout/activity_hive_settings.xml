@@ -48,73 +48,130 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/username_TextView"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:inputType="textLongMessage"
-                android:text="Username:" />
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/username_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:hint="Username:"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/apiary_TextView"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="Apiary:" />
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/apiary_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:hint="Apiary:"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/hive_TextView"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="Hive Name:" />
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/hive_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:hint="Hive Name:"
+                    android:inputType="text"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/inspection_TextView"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="Inspection:" />
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/inspection_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:hint="Inspection:"
+                    android:inputType="text"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/health_TextView"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="Health:" />
 
-            <TextView
-                android:id="@+id/honey_TextView"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="Honey:" />
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/health_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:hint="Health:"
+                    android:inputType="text"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/queenProduction_TextView"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="Queen Production:" />
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/honey_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:hint="Honey"
+                    android:inputType="text"/>
 
-            <TextView
-                android:id="@+id/equipHive_TextView"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="Equipment on the Hive:" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/equipInven_TextView"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="Equipment in Inventory:" />
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/queenProduction_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:hint="Queen Production:"
+                    android:inputType="text"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/loss_TextView"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="Loss:" />
+                android:layout_height="match_parent">
+                <EditText
+                    android:id="@+id/equipHive_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:hint="Equipment on the Hive:"
+                    android:inputType="text"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/gain_TextView"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="Gain:" />
-        </LinearLayout>
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/equipInven_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:hint="Equipment in Inventory:"
+                    android:inputType="text"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/loss_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:hint="Loss:"
+                    android:inputType="text"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/gain_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:hint="Gain:"
+                    android:inputType="text"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
     </ScrollView>
 
     <Button
