@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(v.getId()){
             case R.id.Login_Button:
                 sendData();
+
                 Intent intent2MainActivity2 = new Intent(MainActivity.this, MainActivity2.class);
                 startActivity(intent2MainActivity2);
                 break;
@@ -80,8 +81,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void sendData() {
-        String username = LogicUsername_PlainText.getText().toString();
+        currUser = LogicUsername_PlainText.getText().toString();
         String pass = LoginPassword_PlainText.getText().toString();
-        new SearchAccountAsync().execute(username, CreateNewAccount.encoder(pass));
+        new SearchAccountAsync().execute(currUser, CreateNewAccount.encoder(pass));
     }
 }
