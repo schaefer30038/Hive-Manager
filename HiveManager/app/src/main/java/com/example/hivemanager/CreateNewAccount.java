@@ -21,6 +21,7 @@ public class CreateNewAccount extends AppCompatActivity {
     Button createacc;
     EditText newAccountUsername_PlainText, newAccountPassword_PlainText,
             newAccountAddress_PlainText, newAccountPhone_PlainText,newAccountEmail_PlainText;
+    static String accMade;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +63,9 @@ public class CreateNewAccount extends AppCompatActivity {
         if(!(username.equals("") || pass.equals("") || adr.equals("") || phone.equals("") || email.equals(""))){
             //Send data to back end with photo
             new CreateAccountAsync().execute(username, encoder(pass), null, adr, email, phone);
+
+            // accMade will be "Success" if account is created and it will be "Exist" if account already exists
+
             Intent intent2Main = new Intent(CreateNewAccount.this, MainActivity.class);
             startActivity(intent2Main);
         }

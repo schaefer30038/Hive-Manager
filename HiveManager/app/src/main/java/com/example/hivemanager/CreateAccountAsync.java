@@ -16,7 +16,7 @@ public class CreateAccountAsync extends AsyncTask<Object,Void,Void> {
         String apiary = (String) objects[3];
         String email = (String) objects[4];
         String phone = (String) objects[5];
-        connect.createAccount(username, password, null, apiary, email, phone);
+        CreateNewAccount.accMade = connect.createAccount(username, password, null, apiary, email, phone);
         connect.closeConnection();
         return null;
     }
