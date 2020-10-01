@@ -11,7 +11,7 @@ public class SearchAccountAsync extends AsyncTask<String,Void,Void> {
         SQLConnection connect = new SQLConnection();
         String username = strings[0];
         String password = strings[1];
-        connect.searchAccount(username, password);
+        MainActivity.login = connect.searchAccount(username, password);
         connect.closeConnection();
         return null;
     }

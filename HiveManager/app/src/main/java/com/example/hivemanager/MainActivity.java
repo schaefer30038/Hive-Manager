@@ -31,6 +31,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText LogicUsername_PlainText,LoginPassword_PlainText;
     //ImageView uploadPicture_ImageView;
 
+    // TODO: this string will be "Username" if account doesn't exist
+    // it will be "Password" if the password is wrong and if username and password is a match it will return "Match"
+    static String login;
+    // Stores the current username
+    static String currUser;
+
     public static final int GET_FROM_GALLERY = 3;
 
 
@@ -62,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.Login_Button:
+                sendData();
                 Intent intent2MainActivity2 = new Intent(MainActivity.this, MainActivity2.class);
                 startActivity(intent2MainActivity2);
                 break;
@@ -70,5 +77,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent2CreateNewAccountPage);
                 break;
         }
+    }
+
+    private void sendData() {
+        String username = LogicUsername_PlainText.getText().toString();
+        String pass = LoginPassword_PlainText.getText().toString();
+        new SearchAccountAsync().execute(username, CreateNewAccount.encoder(pass));
     }
 }
