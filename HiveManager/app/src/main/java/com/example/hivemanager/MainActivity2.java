@@ -27,6 +27,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
 
         Logout_Button.setOnClickListener(this);
         ManageHive_Button.setOnClickListener(this);
+        CreatePublicProfile_Button.setOnClickListener(this);
 
     }
 
@@ -42,6 +43,12 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
                 Intent intent2ManageHiveActivity = new Intent(MainActivity2.this, Hive.class);
                 startActivity(intent2ManageHiveActivity);
                 break;
+            case R.id.CreatePublicProfile_Button:
+                Intent intent2CreatePublicProfile = new Intent(MainActivity2.this, CreatePublicProfile.class);
+                startActivity(intent2CreatePublicProfile);
+
+                break;
+
         }
     }
 }
