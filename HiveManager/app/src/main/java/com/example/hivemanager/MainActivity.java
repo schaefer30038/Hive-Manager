@@ -13,12 +13,15 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -55,7 +58,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         LogicUsername_PlainText = (EditText) findViewById(R.id.LogicUsername_PlainText);
         LoginPassword_PlainText = (EditText) findViewById(R.id.LoginPassword_PlainText);
 
-        //uploadPicture_ImageView = (ImageView) findViewById(R.id.IDProf);
 
         Login_Button.setOnClickListener(this);
         CreateNewAccount_Button.setOnClickListener(this);
@@ -69,9 +71,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(v.getId()){
             case R.id.Login_Button:
                 sendData();
-
-                Intent intent2MainActivity2 = new Intent(MainActivity.this, MainActivity2.class);
-                startActivity(intent2MainActivity2);
                 break;
             case R.id.CreateNewAccount_Button:
                 Intent intent2CreateNewAccountPage = new Intent(MainActivity.this, CreateNewAccount.class);
@@ -81,8 +80,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void sendData() {
+        hideKeyboard(MainActivity.this);
         currUser = LogicUsername_PlainText.getText().toString();
         String pass = LoginPassword_PlainText.getText().toString();
         new SearchAccountAsync().execute(currUser, CreateNewAccount.encoder(pass));
+        //TODO check value of LOGIN
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run(){
+                if(login.equals("Match")){
+                    Intent intent2Main = new Intent(MainActivity.this, MainActivity2.class);
+                    startActivity(intent2Main);
+                }
+                else if(login.equals("Username")){
+                    Toast.makeText(MainActivity.this,"Account doesn't exist",Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    // Show error
+                    Toast.makeText(MainActivity.this,"Incorrect Login Credentials",Toast.LENGTH_SHORT).show();
+                }
+            }
+        },1000);
+    }
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }
