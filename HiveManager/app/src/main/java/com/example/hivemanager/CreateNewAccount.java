@@ -61,7 +61,7 @@ public class CreateNewAccount extends AppCompatActivity {
         String email = newAccountEmail_PlainText.getText().toString();
         if(!(username.equals("") || pass.equals("") || adr.equals("") || phone.equals("") || email.equals(""))){
             //Send data to back end with photo
-            new CreateAccountAsync().execute(username, pass, null, adr, email, phone);
+            new CreateAccountAsync().execute(username, encoder(pass), null, adr, email, phone);
             Intent intent2Main = new Intent(CreateNewAccount.this, MainActivity.class);
             startActivity(intent2Main);
         }
@@ -80,5 +80,30 @@ public class CreateNewAccount extends AppCompatActivity {
             imageUri = data.getData();
             imageView.setImageURI(imageUri);
         }
+    }
+    // encodes the password to different string
+    public static String encoder(String input) {
+        String result = "";
+        for (char ch: input.toCharArray()) {
+            int temp = ch + 6;
+            if (temp > 127) {
+                temp = temp - 127;
+            }
+            result = result + ((char) temp);
+        }
+        return result;
+    }
+
+    // decodes the encoded password to original string
+    public static String decoder(String input) {
+        String result = "";
+        for (char ch: input.toCharArray()) {
+            int temp = ch - 6;
+            if (temp < 0) {
+                temp = 127 + temp;
+            }
+            result = result + ((char) temp);
+        }
+        return result;
     }
 }
