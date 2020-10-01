@@ -26,7 +26,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         Logout_Button = (Button) findViewById(R.id.Logout_Button);
 
         Logout_Button.setOnClickListener(this);
-
+        ManageHive_Button.setOnClickListener(this);
 
     }
 
@@ -34,8 +34,13 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.Logout_Button:
-                Intent intent = new Intent(MainActivity2.this, MainActivity.class);
-                startActivity(intent);
+                Intent intent2MainActivity = new Intent(MainActivity2.this, MainActivity.class);
+                startActivity(intent2MainActivity);
+                break;
+
+            case R.id.ManageHive_Button:
+                Intent intent2ManageHiveActivity = new Intent(MainActivity2.this, Hive.class);
+                startActivity(intent2ManageHiveActivity);
                 break;
         }
     }
