@@ -282,32 +282,40 @@ public class SQLConnection {
      * @param gain            int for gains
      * @return
      */
-    protected String updateHive(String username, String apiary, String hive, String inspection, String health,
+    protected String updateHive(String username, String apiary, String oldhive, String newhive, String inspection, String health,
                                 String honey, String queenproduction, String equiphive, String equipinven, int loss, int gain) {
 
-        String res = "fail";
         // Execute query to call updateHive stored procedure
         try {
-            cstmt = conn.prepareCall("call updateHive(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+            cstmt = conn.prepareCall("call updateHive(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
             cstmt.setString(1, username);
             cstmt.setString(2, apiary);
-            cstmt.setString(3, hive);
-            cstmt.setString(4, inspection);
-            cstmt.setString(5, health);
-            cstmt.setString(6, honey);
-            cstmt.setString(7, queenproduction);
-            cstmt.setString(8, equiphive);
-            cstmt.setString(9, equipinven);
-            cstmt.setInt(10, loss);
-            cstmt.setInt(11, gain);
+            cstmt.setString(3, oldhive);
+            cstmt.setString(4, newhive);
+
+            cstmt.setString(5, inspection);
+            cstmt.setString(6, health);
+            cstmt.setString(7, honey);
+            cstmt.setString(8, queenproduction);
+            cstmt.setString(9, equiphive);
+            cstmt.setString(10, equipinven);
+            cstmt.setInt(11, loss);
+            cstmt.setInt(12, gain);
+            cstmt.registerOutParameter(13, Types.VARCHAR);
             cstmt.executeUpdate();
 
-            System.out.println("Successfully updated Hive");
-            res = "success";
+            String status = cstmt.getString(13);
+            if (status.equals("Exist")){
+                System.out.println("Hive with the new name already exists");
+            } else {
+                System.out.println("Successfully updated Hive");
+            }
+
+
         } catch (SQLException e) {
             System.out.println("updateHive: " + e.getMessage());
         }
-        return res;
+        return status;
 
     }
 
@@ -518,6 +526,140 @@ public class SQLConnection {
         } catch (SQLException e) {
             System.out.println("listHive: " + e.getMessage());
             return null;
+        }
+    }
+
+    /**
+     * This method is called to display data of hives that are selected by user to be displayed.
+     * It calls getPreference stored procedures to get which information of hive should be displayed
+     * form the database. Then it calls hiveList to return data of hives.
+     *
+     * @param username String for the user account
+     * @return rs ResultSet that stores the data of hives
+     */
+    protected ResultSet getPreference(String username) {
+        try {
+            // Default boolean value for each column of data set
+            boolean inspection = true;
+            boolean health = true;
+            boolean honey = true;
+            boolean queenproduction = true;
+            boolean equiphive = true;
+            boolean equipinven = true;
+            boolean loss = true;
+            boolean gain = true;
+
+            // Execute getPreference stored procedure from the database
+            cstmt = conn.prepareCall("call getPreference(?, ?, ?, ?, ?, ?, ?, ?, ?);");
+            cstmt.setString(1, username);
+            cstmt.registerOutParameter(2, Types.BIGINT);
+            cstmt.registerOutParameter(3, Types.BIGINT);
+            cstmt.registerOutParameter(4, Types.BIGINT);
+            cstmt.registerOutParameter(5, Types.BIGINT);
+            cstmt.registerOutParameter(6, Types.BIGINT);
+            cstmt.registerOutParameter(7, Types.BIGINT);
+            cstmt.registerOutParameter(8, Types.BIGINT);
+            cstmt.registerOutParameter(9, Types.BIGINT);
+            cstmt.executeUpdate();
+
+            // Translate int values from the data into boolean values
+            if (cstmt.getInt(2) == 0) {
+                inspection = false;
+            }
+            if (cstmt.getInt(3) == 0) {
+                health = false;
+            }
+            if (cstmt.getInt(4) == 0) {
+                honey = false;
+            }
+            if (cstmt.getInt(5) == 0) {
+                queenproduction = false;
+            }
+            if (cstmt.getInt(6) == 0) {
+                equiphive = false;
+            }
+            if (cstmt.getInt(7) == 0) {
+                equipinven = false;
+            }
+            if (cstmt.getInt(8) == 0) {
+                loss = false;
+            }
+            if (cstmt.getInt(9) == 0) {
+                gain = false;
+            }
+
+            // Call hiveList to get data with selected information
+            return hiveList(username, inspection, health, honey, queenproduction, equiphive, equipinven, loss, gain);
+        } catch (SQLException e) {
+            System.out.println("getPreference: " + e.getMessage());
+        }
+        return null;
+    }
+
+
+    /**
+     * This method is called to edit the preference for information to be displayed by the user.
+     * It calls editPreference stored procedure to update the preference in the database.
+     *
+     * @param username String for the user account
+     * @param inspection True to be displayed. Otherwise, not displayed.
+     * @param health True to be displayed. Otherwise, not displayed.
+     * @param honey True to be displayed. Otherwise, not displayed.
+     * @param queenproduction True to be displayed. Otherwise, not displayed.
+     * @param equiphive True to be displayed. Otherwise, not displayed.
+     * @param equipinven True to be displayed. Otherwise, not displayed.
+     * @param loss True to be displayed. Otherwise, not displayed.
+     * @param gain True to be displayed. Otherwise, not displayed.
+     * @return String to check if the method is successfully executed
+     */
+    protected String editPreference(String username, boolean inspection, boolean health, boolean honey,
+                                  boolean queenproduction, boolean equiphive, boolean equipinven, boolean loss, boolean gain) {
+        try {
+            // Default values for each column of data in the database
+            int intinspection =0;
+            int inthealth = 0;
+            int inthoney = 0;
+            int intqueenproduction=0;
+            int intequiphive =0;
+            int intequipinven=0;
+            int intloss=0;
+            int intgain=0;
+
+            // Translate boolean values of parameters into integer value
+            if (inspection == true) intinspection = 1;
+
+            if (health == true) inthealth = 1;
+
+            if (honey == true) inthoney = 1;
+
+            if (queenproduction == true) intqueenproduction = 1;
+
+            if (equiphive == true) intequiphive = 1;
+
+            if (equipinven == true) intequipinven = 1;
+
+            if (loss == true) intloss = 1;
+
+            if (gain == true) intgain = 1;
+
+            // Execute editPreference stored procedure
+            cstmt = conn.prepareCall("call editPreference(?, ?, ?, ?, ?, ?, ?, ?, ?);");
+            cstmt.setString(1, username);
+            cstmt.setInt(2, intinspection);
+            cstmt.setInt(3, inthealth);
+            cstmt.setInt(4, inthoney);
+            cstmt.setInt(5, intqueenproduction);
+            cstmt.setInt(6, intequiphive);
+            cstmt.setInt(7, intequipinven);
+            cstmt.setInt(8, intloss);
+            cstmt.setInt(9, intgain);
+            cstmt.executeUpdate();
+
+            return "Successfully updated preference";
+
+        } catch (SQLException e) {
+            return "editPreference: " + e.getMessage();
+
         }
     }
 
