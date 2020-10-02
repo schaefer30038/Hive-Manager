@@ -55,7 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <EditText
+                <TextView
                     android:id="@+id/username_TextView"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <EditText
+                <TextView
                     android:id="@+id/apiary_TextView"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
@@ -170,7 +170,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:hint="Loss:"
-                    android:inputType="text" />
+                    android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -182,7 +182,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:hint="Gain:"
-                    android:inputType="text" />
+                    android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
@@ -210,5 +210,16 @@
         app:layout_constraintTop_toBottomOf="@+id/hiveInfo_TextView"
         app:layout_constraintVertical_bias="0.04000002"
         tools:layout_constraintTop_toBottomOf="@id/hiveInfo_TextView" />
+    
+    <Button
+        android:id="@+id/createHive_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="148dp"
+        android:layout_marginEnd="132dp"
+        android:layout_marginRight="132dp"
+        android:text="Create new Hive"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
