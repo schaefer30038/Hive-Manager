@@ -106,7 +106,7 @@ public class SQLConnection {
         } catch (SQLException e) {
             System.out.println("createAccount: " + e.getMessage());
         }
-		return status
+		return status;
     }
 
     /**
@@ -679,12 +679,12 @@ public class SQLConnection {
             cstmt.setInt(9, intgain);
 
             cstmt.executeUpdate();
-			return "Successfully updated preference";
             System.out.println("Successfully updated preference");
+			return "Successfully updated preference";
 
         } catch (SQLException e) {
-			return "editPreference: " + e.getMessage();
             System.out.println("editPreference: " + e.getMessage());
+			return "editPreference: " + e.getMessage();
         }
     }
 
