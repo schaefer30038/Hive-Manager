@@ -16,11 +16,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class HiveSettings extends AppCompatActivity implements View.OnClickListener{
-    TextView hiveName_TextView, hiveApiary_TextView, hiveInfo_TextView,  username_TextView, apiary_TextView, hive_TextView, inspection_TextView, health_TextView, honey_TextView,
+    TextView hiveInfo_TextView  , apiary_TextView, hive_TextView, inspection_TextView, health_TextView, honey_TextView,
              queenProduction_TextView, equipHive_TextView,equipInven_TextView, loss_TextView, gain_TextView;
     Button deleteHive_Button, editHive_Button, createHive_Button;
 
-    static String stringHiveName, stringApiaryName;
+    static String stringHiveName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
