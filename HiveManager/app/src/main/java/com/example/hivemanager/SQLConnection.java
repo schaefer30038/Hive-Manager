@@ -705,7 +705,7 @@ public class SQLConnection {
 	 * @param rs ResultSet that stores the data
 	 * @return Array of Arraylist that stores the data of ResultSet
 	 */
-    protected ArrayList<String>[] hiveSelectedInfo(ResultSet rs) {
+    static ArrayList<String>[] hiveSelectedInfo(ResultSet rs) {
 
         try {
             ResultSetMetaData rsmd = rs.getMetaData();
