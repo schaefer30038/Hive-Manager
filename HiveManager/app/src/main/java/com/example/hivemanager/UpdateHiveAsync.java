@@ -21,7 +21,12 @@ public class UpdateHiveAsync extends AsyncTask<String,Void,Void> {
         int gain = Integer.parseInt(strings[11]);
         connect.updateHive(username, apiary, oldhive, newhive, inspection, health, honey, queenproduction, equiphive, equipinven,
                 loss, gain);
-        MainActivity.done = true;
         return null;
+    }
+
+    @Override
+    protected void onPostExecute(Void aVoid) {
+        super.onPostExecute(aVoid);
+        MainActivity.done = true;
     }
 }

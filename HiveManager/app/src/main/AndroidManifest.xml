@@ -15,7 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HiveSettings"></activity>
+        <activity android:name=".ApiarySettings"></activity>
+        <activity android:name=".Apiary" />
+        <activity android:name=".HiveSettings" />
         <activity android:name=".CreateNewAccount" />
         <activity android:name=".CreatePublicProfile" />
         <activity android:name=".ViewPublicProfile" />

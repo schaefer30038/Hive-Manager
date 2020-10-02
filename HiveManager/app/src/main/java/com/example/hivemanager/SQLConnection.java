@@ -1,6 +1,5 @@
 package com.example.hivemanager;
 
-import java.io.File;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -71,13 +70,13 @@ public class SQLConnection {
     /**
      * This method is called when the user creates an account. It calls
      * createAccount stored procedure from the database to create the account.
-     *
      * @param username String for the user account
      * @param password String for the password
      * @param picture  Blob that refers to the picture uploaded by the user
      * @param apiary   String for the initial apiary address
      * @param email    String for the user's email
      * @param phone    String for the user's phone
+     * @return
      */
     protected String createAccount(String username, String password, Blob picture, String apiary, String email,
                                    String phone) {
@@ -106,16 +105,17 @@ public class SQLConnection {
         } catch (SQLException e) {
             System.out.println("createAccount: " + e.getMessage());
         }
-		return status;
+        return status;
+
     }
 
     /**
      * This method is called when the user tries to log in in the app. It calls
      * searchAccount stored procedure from the database to check if the user account
      * with the password exists.
-     *
      * @param username String variable for the user account
      * @param password String variable for the password
+     * @return
      */
     protected String searchAccount(String username, String password) {
         try {
@@ -140,22 +140,22 @@ public class SQLConnection {
         } catch (SQLException e) {
             System.out.println("searchAccount: " + e.getMessage());
         }
-		return status;
+        return status;
     }
 
     /**
      * This method is called when the user updates the user's profile. It will
      * execute updateProfile stored procedure from the database to update the
      * profile of the user's account
-     *
      * @param username String for the user's account
      * @param picture  Blob format for the picture uploaded by the user
      * @param email    String for the user's email
      * @param phone    String for the user's phone
+     * @return
      */
     protected String updateProfile(String username, Blob picture, String email, String phone) {
-		
-		String res = "fail";
+
+        String res = "fail";
         try {
             // Execute query to call updateProfile procedure
             cstmt = conn.prepareCall("call updateProfile(?, ?, ?, ?);");
@@ -165,11 +165,11 @@ public class SQLConnection {
             cstmt.setString(4, phone);
             cstmt.execute();
             System.out.println("Successfully updated profile");
-			res = "success";
+            res = "success";
         } catch (SQLException e) {
             System.out.println("updateProfile: " + e.getMessage());
         }
-		return res;
+        return res;
     }
 
     /**
@@ -195,7 +195,6 @@ public class SQLConnection {
      * This method is called when the user creates a hive into the database. It
      * calls createHive stored procedure to store the new information of new hive
      * into the database
-     *
      * @param username        String for the user account
      * @param apiary          String for the apiary address of hive
      * @param hive            String for the name of hive
@@ -207,6 +206,7 @@ public class SQLConnection {
      * @param equipinven      String for equipment in inventory
      * @param loss            int for losses
      * @param gain            int for gains
+     * @return
      */
     protected String createHive(String username, String apiary, String hive, String inspection, String health,
                                 String honey, String queenproduction, String equiphive, String equipinven, int loss, int gain) {
@@ -242,7 +242,8 @@ public class SQLConnection {
         } catch (SQLException e) {
             System.out.println("createHive: " + e.getMessage());
         }
-		return status;
+        return status;
+
     }
 
     /**
@@ -269,7 +270,6 @@ public class SQLConnection {
      * the apiary address and the name of the hive. It executes updateHive stored
      * procedure. It restricts the user to change the apiary adress and the name of
      * hive.
-     *
      * @param username        String for the user account
      * @param apiary          String for the apiary address of hive
      * @param hive            String for the name of hive
@@ -281,6 +281,7 @@ public class SQLConnection {
      * @param equipinven      String for equipment in inventory
      * @param loss            int for losses
      * @param gain            int for gains
+     * @return
      */
     protected String updateHive(String username, String apiary, String oldhive, String newhive, String inspection, String health,
                                 String honey, String queenproduction, String equiphive, String equipinven, int loss, int gain) {
@@ -292,6 +293,7 @@ public class SQLConnection {
             cstmt.setString(2, apiary);
             cstmt.setString(3, oldhive);
             cstmt.setString(4, newhive);
+
             cstmt.setString(5, inspection);
             cstmt.setString(6, health);
             cstmt.setString(7, honey);
@@ -304,16 +306,17 @@ public class SQLConnection {
             cstmt.executeUpdate();
 
             String status = cstmt.getString(13);
-
-            if (status.equals("Exist")) {
-                System.out.println("Hive exists");
+            if (status.equals("Exist")){
+                System.out.println("Hive with the new name already exists");
             } else {
                 System.out.println("Successfully updated Hive");
             }
+
+
         } catch (SQLException e) {
             System.out.println("updateHive: " + e.getMessage());
         }
-		return status;
+        return status;
 
     }
 
@@ -321,12 +324,13 @@ public class SQLConnection {
      * This method is called to delete a hive specified by the username, apiary
      * address, and the name of hive by executing a delteHive stored procedures in
      * the database.
-     *
      * @param username String for the user's account
      * @param apiary   String for the user's apiary address
      * @param hive     String for the name of hive
+     * @return
      */
     protected String deleteHive(String username, String apiary, String hive) {
+
         try {
             // Execute query to call deleteHive stored procedure
             cstmt = conn.prepareCall("call deleteHive(?, ?, ?, ?);");
@@ -347,7 +351,7 @@ public class SQLConnection {
         } catch (SQLException e) {
             System.out.println("Error in deleteHive: " + e.getMessage());
         }
-		return status;
+        return status;
     }
 
     /**
@@ -355,9 +359,9 @@ public class SQLConnection {
      * createApiary stored procedure. If there is a apiary with the same name, it
      * does not create the new apiary. If the user creates a apiary that is not
      * belong to the user, it does not create the new apiary.
-     *
      * @param username String for the user's account
      * @param apiary   String for the new apiary address
+     * @return
      */
     protected String createApiary(String username, String apiary) {
         try {
@@ -380,7 +384,7 @@ public class SQLConnection {
         } catch (SQLException e) {
             System.out.println("createApiary: " + e.getMessage());
         }
-		return status;
+        return status;
     }
 
     /**
@@ -388,10 +392,10 @@ public class SQLConnection {
      * executes updateApiary stored procedure. It does not allow the user to change
      * non-existing apiary and to update a apiary to another apiary's name that
      * already exists.
-     *
      * @param username  String for the user account
      * @param oldpiary  String for the original name of apiary
      * @param newapiary String for the new name of apiary
+     * @return
      */
     protected String updateApiary(String username, String oldpiary, String newapiary) {
         try {
@@ -416,14 +420,14 @@ public class SQLConnection {
         } catch (SQLException e) {
             System.out.println("updateApiary: " + e.getMessage());
         }
-		return status;
+        return status;
     }
 
     /**
      * This method is called when the user deletes the user's apiary.
-     *
      * @param username String for the user account
      * @param apiary   String for the user apiary
+     * @return
      */
     protected String deleteApiary(String username, String apiary) {
         try {
@@ -447,7 +451,8 @@ public class SQLConnection {
         } catch (SQLException e) {
             System.out.println("deleteApiary: " + e.getMessage());
         }
-		return status;
+        return status;
+
     }
 
     protected ResultSet displayApiary(String username) {
@@ -462,7 +467,6 @@ public class SQLConnection {
             return null;
         }
     }
-
     /**
      * This method is to display selected information of hives owned by the user
      *
@@ -476,8 +480,8 @@ public class SQLConnection {
      * @param loss            boolean to display loss
      * @param gain            boolean to display gain
      */
-    protected ResultSet hiveList(String username, boolean inspection, boolean health, boolean honey,
-                                 boolean queenproduction, boolean equiphive, boolean equipinven, boolean loss, boolean gain) {
+    protected ResultSet hiveList(String username, boolean inspection, boolean health, boolean honey, boolean queenproduction,
+                                 boolean equiphive, boolean equipinven, boolean loss, boolean gain) {
 
         // Create sql statement
         sql = "select uh.username, uh.apiary, uh.hive";
@@ -527,15 +531,16 @@ public class SQLConnection {
     }
 
     /**
-     * This method is called to get data for selected information of hives chosen by the user.
-     * It calls getPreferene stored procedure and hiveList() to get the data.
+     * This method is called to display data of hives that are selected by user to be displayed.
+     * It calls getPreference stored procedures to get which information of hive should be displayed
+     * form the database. Then it calls hiveList to return data of hives.
      *
      * @param username String for the user account
-     * @return ResultSet that stores the data for selected information
+     * @return rs ResultSet that stores the data of hives
      */
     protected ResultSet getPreference(String username) {
         try {
-            // Default boolean value for each information to be displayed
+            // Default boolean value for each column of data set
             boolean inspection = true;
             boolean health = true;
             boolean honey = true;
@@ -545,7 +550,7 @@ public class SQLConnection {
             boolean loss = true;
             boolean gain = true;
 
-            // Execute getPreference stored procedure
+            // Execute getPreference stored procedure from the database
             cstmt = conn.prepareCall("call getPreference(?, ?, ?, ?, ?, ?, ?, ?, ?);");
             cstmt.setString(1, username);
             cstmt.registerOutParameter(2, Types.BIGINT);
@@ -556,10 +561,9 @@ public class SQLConnection {
             cstmt.registerOutParameter(7, Types.BIGINT);
             cstmt.registerOutParameter(8, Types.BIGINT);
             cstmt.registerOutParameter(9, Types.BIGINT);
-
             cstmt.executeUpdate();
 
-            // Updates boolean values for each information
+            // Translate int values from the data into boolean values
             if (cstmt.getInt(2) == 0) {
                 inspection = false;
             }
@@ -585,14 +589,16 @@ public class SQLConnection {
                 gain = false;
             }
 
+            // Call hiveList to get data with selected information
             return hiveList(username, inspection, health, honey, queenproduction, equiphive, equipinven, loss, gain);
         } catch (SQLException e) {
             System.out.println("getPreference: " + e.getMessage());
         }
         return null;
     }
-	
-	 /**
+
+
+    /**
      * This method is called to edit the preference for information to be displayed by the user.
      * It calls editPreference stored procedure to update the preference in the database.
      *
@@ -608,67 +614,38 @@ public class SQLConnection {
      * @return String to check if the method is successfully executed
      */
     protected String editPreference(String username, boolean inspection, boolean health, boolean honey,
-                                  boolean queenproduction, boolean equiphive, boolean equipinven, boolean loss, boolean gain) {
+                                    boolean queenproduction, boolean equiphive, boolean equipinven, boolean loss, boolean gain) {
         try {
+            // Default values for each column of data in the database
+            int intinspection =0;
+            int inthealth = 0;
+            int inthoney = 0;
+            int intqueenproduction=0;
+            int intequiphive =0;
+            int intequipinven=0;
+            int intloss=0;
+            int intgain=0;
+
+            // Translate boolean values of parameters into integer value
+            if (inspection == true) intinspection = 1;
+
+            if (health == true) inthealth = 1;
+
+            if (honey == true) inthoney = 1;
+
+            if (queenproduction == true) intqueenproduction = 1;
+
+            if (equiphive == true) intequiphive = 1;
+
+            if (equipinven == true) intequipinven = 1;
+
+            if (loss == true) intloss = 1;
+
+            if (gain == true) intgain = 1;
+
+            // Execute editPreference stored procedure
             cstmt = conn.prepareCall("call editPreference(?, ?, ?, ?, ?, ?, ?, ?, ?);");
             cstmt.setString(1, username);
-            int intinspection;
-            int inthealth;
-            int inthoney;
-            int intqueenproduction;
-            int intequiphive;
-            int intequipinven;
-            int intloss;
-            int intgain;
-
-            if (inspection == true) {
-                intinspection = 1;
-            } else {
-                intinspection = 0;
-            }
-
-            if (health == true) {
-                inthealth = 1;
-            } else {
-                inthealth = 0;
-            }
-
-            if (honey == true) {
-                inthoney = 1;
-            } else {
-                inthoney = 0;
-            }
-
-            if (queenproduction == true) {
-                intqueenproduction = 1;
-            } else {
-                intqueenproduction = 0;
-            }
-
-            if (equiphive == true) {
-                intequiphive = 1;
-            } else {
-                intequiphive = 0;
-            }
-
-            if (equipinven == true) {
-                intequipinven = 1;
-            } else {
-                intequipinven = 0;
-            }
-
-            if (loss == true) {
-                intloss = 1;
-            } else {
-                intloss = 0;
-            }
-
-            if (gain == true) {
-                intgain = 1;
-            } else {
-                intgain = 0;
-            }
-
             cstmt.setInt(2, intinspection);
             cstmt.setInt(3, inthealth);
             cstmt.setInt(4, inthoney);
@@ -677,24 +654,16 @@ public class SQLConnection {
             cstmt.setInt(7, intequipinven);
             cstmt.setInt(8, intloss);
             cstmt.setInt(9, intgain);
-
             cstmt.executeUpdate();
-            System.out.println("Successfully updated preference");
-			return "Successfully updated preference";
+
+            return "Successfully updated preference";
 
         } catch (SQLException e) {
-            System.out.println("editPreference: " + e.getMessage());
-			return "editPreference: " + e.getMessage();
+            return "editPreference: " + e.getMessage();
+
         }
     }
 
-    /**
-     *
-     * @param username
-     * @param apiary
-     * @param hive
-     * @return
-     */
     protected ResultSet displaySpecificHive(String username, String apiary, String hive) {
         try {
             cstmt = conn.prepareCall("call displaySpecificHive(?, ?, ?, ?);");
@@ -743,4 +712,5 @@ public class SQLConnection {
         }
 
     }
+
 }

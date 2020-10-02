@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run(){
+                SearchAccountAsync.connect.closeConnection();
                 if(login.equals("Match")){
                     Intent intent2Main = new Intent(MainActivity.this, MainActivity2.class);
                     startActivity(intent2Main);

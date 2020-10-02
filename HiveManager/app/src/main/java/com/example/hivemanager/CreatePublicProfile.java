@@ -58,7 +58,8 @@ public class CreatePublicProfile extends AppCompatActivity {
             @Override
             public void run(){
         while(true){
-            if(DisplayProfileAsync.rs != null){
+            if(MainActivity.done == true){
+                MainActivity.done = false;
                 break;
             }
         }

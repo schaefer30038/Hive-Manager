@@ -12,8 +12,13 @@ public class DisplayProfileAsync extends AsyncTask<String, Void, Void> {
         connect = new SQLConnection();
         String username = strings[0];
         rs =connect.displayProfile(username);
-        MainActivity.done = true;
         return null;
+    }
+
+    @Override
+    protected void onPostExecute(Void aVoid) {
+        super.onPostExecute(aVoid);
+        MainActivity.done = true;
     }
 
 
