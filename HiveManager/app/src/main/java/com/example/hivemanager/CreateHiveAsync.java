@@ -3,11 +3,10 @@ package com.example.hivemanager;
 import android.os.AsyncTask;
 
 public class CreateHiveAsync extends AsyncTask<String,Void,Void> {
-
-    static boolean done = false;
-
+    static SQLConnection connect;
     @Override
     protected Void doInBackground(String... strings) {
+        connect = new SQLConnection();
         String username = strings[0];
         String apiary = strings[1];
         String hive = strings[2];
@@ -19,9 +18,9 @@ public class CreateHiveAsync extends AsyncTask<String,Void,Void> {
         String equipinven = strings[8];
         int loss = Integer.parseInt(strings[9]);
         int gain = Integer.parseInt(strings[10]);
-        MainActivity.connection.createHive(username, apiary, hive, inspection, health, honey, queenproduction, equiphive, equipinven,
+        connect.createHive(username, apiary, hive, inspection, health, honey, queenproduction, equiphive, equipinven,
                 loss, gain);
-        done = true;
+        MainActivity.done = true;
         return null;
     }
 }

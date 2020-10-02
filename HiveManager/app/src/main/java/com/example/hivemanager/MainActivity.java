@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // Stores the current username
     static String currUser;
 
+    static boolean done = false;
     public static final int GET_FROM_GALLERY = 3;
 
 

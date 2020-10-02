@@ -2,14 +2,17 @@ package com.example.hivemanager;
 
 import android.os.AsyncTask;
 
-public class DisplayHiveAsync extends AsyncTask<String, Void, Void> {
+import java.sql.ResultSet;
 
-    static boolean done = false;
+public class DisplayHiveAsync extends AsyncTask<String, Void, Void> {
+    static SQLConnection connect;
+    static ResultSet rs;
     @Override
     protected Void doInBackground(String... strings) {
+        connect = new SQLConnection();
         String username = strings[0];
-        Hive.resultSet = MainActivity.connection.displayHive(username);
-        done = true;
+        rs = connect.displayHive(username);
+        MainActivity.done = true;
         return null;
     }
 }

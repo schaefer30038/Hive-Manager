@@ -4,15 +4,17 @@ import android.os.AsyncTask;
 
 import com.mysql.jdbc.Blob;
 
+import java.sql.ResultSet;
+
 public class GetPreferenceAsync extends AsyncTask<Object,Void,Void> {
-
-    static boolean done = false;
-
+    static SQLConnection connect;
+    static ResultSet rs;
     @Override
     protected Void doInBackground(Object... objects) {
+        connect = new SQLConnection();
         String username = (String) objects[0];
-        MainActivity.connection.getPreference(username);
-        done = true;
+        rs = connect.getPreference(username);
+        MainActivity.done = true;
         return null;
     }
 }

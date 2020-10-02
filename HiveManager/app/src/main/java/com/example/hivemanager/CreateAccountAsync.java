@@ -7,8 +7,6 @@ import com.mysql.jdbc.Blob;
 
 public class CreateAccountAsync extends AsyncTask<Object,Void,Void> {
 
-    static boolean done = false;
-
     @Override
     protected Void doInBackground(Object... objects) {
         SQLConnection connect = new SQLConnection();
@@ -20,7 +18,7 @@ public class CreateAccountAsync extends AsyncTask<Object,Void,Void> {
         String phone = (String) objects[5];
         CreateNewAccount.accMade = connect.createAccount(username, password, null, apiary, email, phone);
         connect.closeConnection();
-        done = true;
+        MainActivity.done = true;
         return null;
     }
 }

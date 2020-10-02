@@ -29,7 +29,6 @@ public class Hive extends AppCompatActivity implements View.OnClickListener {
     public static final String EXTRA_TEXT_HIVE = "com.example.application.Hive.EXTRA_TEXT_HIVE";
     public static final String EXTRA_TEXT_APIARY = "com.example.application.Hive.EXTRA_TEXT_APIARY";
 
-    static ResultSet resultSet = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +45,13 @@ public class Hive extends AppCompatActivity implements View.OnClickListener {
         new DisplayHiveAsync().execute(MainActivity.currUser);
 
         while(true) {
-            if (resultSet != null) {
+            if (MainActivity.done) {
+                MainActivity.done = false;
                 break;
             }
         }
+        System.out.println("ASDASD");
+        ResultSet resultSet = DisplayApiaryAsync.rs;
         if (resultSet != null) {
             try {
                 while (resultSet.next()) {

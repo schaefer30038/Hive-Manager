@@ -3,16 +3,15 @@ package com.example.hivemanager;
 import android.os.AsyncTask;
 
 public class DeleteHiveAsync extends AsyncTask<String,Void,Void> {
-
-    static boolean done = false;
-
+    static SQLConnection connect;
     @Override
     protected Void doInBackground(String... strings) {
+        connect = new SQLConnection();
         String username = strings[0];
         String apiary = strings[1];
         String hive = strings[2];
-        MainActivity.connection.deleteHive(username, apiary, hive);
-        done = true;
+        connect.deleteHive(username, apiary, hive);
+        MainActivity.done = true;
         return null;
     }
 }

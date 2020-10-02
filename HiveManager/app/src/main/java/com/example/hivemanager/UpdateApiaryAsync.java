@@ -3,16 +3,16 @@ package com.example.hivemanager;
 import android.os.AsyncTask;
 
 public class UpdateApiaryAsync extends AsyncTask<String,Void,Void> {
-    static boolean done = false;
+    static SQLConnection connect;
 
     @Override
     protected Void doInBackground(String... strings) {
-        SQLConnection connect = new SQLConnection();
+        connect = new SQLConnection();
         String username = strings[0];
         String oldpiary = strings[1];
         String newpiary = strings[2];
         connect.updateApiary(username, oldpiary, newpiary);
-        done = true;
+        MainActivity.done = true;
         return null;
     }
 }

@@ -6,11 +6,11 @@ import java.sql.ResultSet;
 
 public class HiveListAsync extends AsyncTask<String, Void, ResultSet> {
     static ResultSet rs;
-    static boolean done = false;
+    static SQLConnection connect;
 
     @Override
     protected ResultSet doInBackground(String... strings) {
-        SQLConnection connect = new SQLConnection();
+        connect = new SQLConnection();
         String username = strings[0];
         Boolean inspection = 0 != Integer.parseInt(strings[1]);
         Boolean health = 0 != Integer.parseInt(strings[2]);
@@ -22,7 +22,7 @@ public class HiveListAsync extends AsyncTask<String, Void, ResultSet> {
         Boolean gain = 0 != Integer.parseInt(strings[8]);
         rs = connect.hiveList(username, inspection, health, honey, queenproduction, equiphive, equipinven,
                 loss, gain);
-        done = true;
+        MainActivity.done = true;
         return rs;
     }
 
