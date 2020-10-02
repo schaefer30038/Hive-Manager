@@ -8,25 +8,35 @@
 
     tools:context=".MainActivity2">
 
-
-
-    <ImageView
-        android:id="@+id/imageView2"
+    <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
+        android:background="@drawable/ic_liquid_cheese2" />
 
-        android:src="@drawable/yt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
+    <ImageView
+        android:id="@+id/Wave_Extension"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/honey"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/Wave_Img"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="120dp"
+        android:src="@drawable/ic_wave"
+        app:layout_constraintTop_toTopOf="@id/Wave_Extension"
+        tools:layout_editor_absoluteX="0dp" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="66dp"
-        android:background="#FFCC00"
+        android:background="#ebaf4c"
+        android:fontFamily="casual"
         android:gravity="center_horizontal"
         android:text="Main Menu"
         android:textAlignment="center"
@@ -37,7 +47,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"/>
+        app:layout_constraintVertical_bias="0.068" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
