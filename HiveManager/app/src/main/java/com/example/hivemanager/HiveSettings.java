@@ -45,11 +45,11 @@ public class HiveSettings extends AppCompatActivity implements View.OnClickListe
         deleteHive_Button.setOnClickListener(this);
         editHive_Button.setOnClickListener(this);
 
-        hiveName_TextView = (TextView) findViewById(R.id.hiveName_TextView);
-        hiveApiary_TextView = (TextView) findViewById(R.id.hiveName_TextView);
+        //hiveName_TextView = (TextView) findViewById(R.id.hiveName_TextView);
+        //hiveApiary_TextView = (TextView) findViewById(R.id.hiveName_TextView);
 
-        hiveName_TextView.setText(stringHiveName);
-        hiveApiary_TextView.setText(stringApiaryName);
+        //hiveName_TextView.setText(stringHiveName);
+        //hiveApiary_TextView.setText(stringApiaryName);
 
         // var test contains the hive name which we need to add
 
