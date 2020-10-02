@@ -30,9 +30,9 @@ public class CreatePublicProfile extends AppCompatActivity {
     private static String gn = "0";
     Uri imageUri;
     ImageView imageView;
-    Button Upload_Button,Create_Profile;
+    Button Upload_Button,setContact,setPref;
     CheckBox result,health,honey,queen,hiveequip,inventequip,losses,gains;
-    EditText PublicProfileAddress_PlainText, PublicProfilePhone_PlainText, PublicProfileEmail_PlainText;
+    EditText PublicProfilePhone_PlainText, PublicProfileEmail_PlainText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,28 +67,37 @@ public class CreatePublicProfile extends AppCompatActivity {
             while (DisplayProfileAsync.rs.next()) {
                 PublicProfileEmail_PlainText.setText(DisplayProfileAsync.rs.getString("email"));
                 PublicProfilePhone_PlainText.setText(DisplayProfileAsync.rs.getString("phone"));
-                PublicProfileEmail_PlainText.setEnabled(false);
-                PublicProfilePhone_PlainText.setEnabled(false);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }    }
         },1000);
 
+
+
         //DisplayProfileAsync.connect.closeConnection();
 
 
-
+        setPref = (Button) findViewById(R.id.setHivepref_Button);
         imageView = (ImageView) findViewById(R.id.IDProf);
         imageView.setImageResource(R.drawable.bee1);
         Upload_Button = (Button) findViewById(R.id.upload_Button);
-        Create_Profile = (Button) findViewById(R.id.CreatePublicProfile_Button) ;
-        Create_Profile.setOnClickListener(new View.OnClickListener() {
+        setContact = (Button) findViewById(R.id.setcontactinfo_Button) ;
+        setContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                contact();
+            }
+        });
+
+        setPref.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sendData();
             }
         });
+
+
         Upload_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -179,27 +188,34 @@ public class CreatePublicProfile extends AppCompatActivity {
                 else gn = "0";
             }
         });
+
     }
 
-    private void sendData() {
+    private void contact() {
+        new UpdateProfileAsync().execute(MainActivity.currUser.toString(),null,PublicProfileEmail_PlainText.getText().toString(),PublicProfilePhone_PlainText.getText().toString());
+        while(true){
+            if(MainActivity.done == true){
+                MainActivity.done = false;
+                UpdateProfileAsync.connect.closeConnection();
+                break;
+            }
+        }
+    }
 
+
+
+    private void sendData() {
         //Somehow store one photo and send it
         if(gn != null && lss != null && rslt != null && hlth !=null && qn != null && hve !=null ) {
             new EditPreferenceAsync().execute(MainActivity.currUser, rslt, hlth, hny, qn, hve, invent, lss, gn);
             while (true) {
                 if (MainActivity.done == true) {
                     MainActivity.done = false;
+                    EditPreferenceAsync.connect.closeConnection();
                     break;
                 }
             }
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    EditPreferenceAsync.connect.closeConnection();
-                }
-            },1000);
-
-        } //use bool values and pass to backend
+        }
     }
 
     private void openGallery() {
