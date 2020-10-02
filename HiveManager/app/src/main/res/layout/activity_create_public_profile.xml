@@ -7,6 +7,7 @@
     tools:context=".CreateNewAccount">
 
     <View
+        android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/ic_liquid_cheese2" />
@@ -58,20 +59,11 @@
         android:id="@+id/CreatePublicProfile_Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Create Profile"
+        android:layout_marginTop="20dp"
         android:background="@color/honey"
-        app:layout_constraintEnd_toEndOf="@id/newAccountPhone_PlainText"
-        app:layout_constraintStart_toStartOf="@+id/newAccountPhone_PlainText"
-        app:layout_constraintTop_toBottomOf="@id/newAccountPhone_PlainText" />
-
-    <EditText
-        android:id="@+id/newAccountAddress_PlainText"
-        android:layout_width="179dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="8dp"
-        android:hint="Apiary Address"
-        app:layout_constraintStart_toStartOf="@id/newAccountEmail_PlainText"
+        android:text="Create Profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newAccountEmail_PlainText" />
 
     <EditText
@@ -129,19 +121,19 @@
 
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CreatePublicProfile_Button"
+        app:layout_constraintVertical_bias="0.692" />
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="322dp"
-        android:layout_height="158dp"
+        android:layout_width="354dp"
+        android:layout_height="229dp"
         android:isScrollContainer="false"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/newAccountAddress_PlainText"
-        app:layout_constraintVertical_bias="0.48000002">
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent">
 
 
         <LinearLayout
@@ -153,8 +145,8 @@
                 android:id="@+id/result"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:layout_marginTop="8dp"
                 android:text="Result"
                 app:layout_constraintStart_toStartOf="parent"
@@ -164,8 +156,8 @@
                 android:id="@+id/health"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:text="Health"
                 app:layout_constraintStart_toEndOf="@+id/result"
                 app:layout_constraintTop_toTopOf="@+id/result" />
@@ -174,8 +166,8 @@
                 android:id="@+id/honey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:text="Honey Stores"
                 app:layout_constraintStart_toEndOf="@+id/health"
                 app:layout_constraintTop_toTopOf="@+id/result" />
@@ -184,8 +176,8 @@
                 android:id="@+id/queen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:text="Queen Production"
                 app:layout_constraintTop_toTopOf="@+id/result"
                 tools:layout_editor_absoluteX="286dp" />
@@ -194,32 +186,32 @@
                 android:id="@+id/equipmentHive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:text="Hive \nEquipment." />
 
             <CheckBox
                 android:id="@+id/equipmentInvent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:text="Inventory \nEquipment" />
 
             <CheckBox
                 android:id="@+id/loss"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:text="Losses" />
 
             <CheckBox
                 android:id="@+id/gain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
                 android:text="Gains"
                 tools:layout_editor_absoluteX="324dp" />
 
@@ -227,7 +219,6 @@
 
 
     </ScrollView>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
