@@ -15,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import java.sql.Blob;
 import java.sql.SQLException;
 
 public class CreatePublicProfile extends AppCompatActivity {
@@ -30,7 +31,7 @@ public class CreatePublicProfile extends AppCompatActivity {
     private static String gn = "0";
     Uri imageUri;
     ImageView imageView;
-    Button Upload_Button,setContact,setPref;
+    Button Upload_Button,setPref;
     CheckBox result,health,honey,queen,hiveequip,inventequip,losses,gains;
     EditText PublicProfilePhone_PlainText, PublicProfileEmail_PlainText;
     @Override
@@ -41,16 +42,12 @@ public class CreatePublicProfile extends AppCompatActivity {
 
         PublicProfilePhone_PlainText = (EditText) findViewById(R.id.newAccountPhone_PlainText);
         PublicProfileEmail_PlainText = (EditText) findViewById(R.id.newAccountEmail_PlainText);
-
-
-
-
         rslt = "0";
         hlth = "0";
         hny = "0";
         qn = "0";
         hve = "0";
-        invent = "0";
+        invent ="0";
         lss =  "0";
         gn = "0";
         new DisplayProfileAsync().execute(MainActivity.currUser);
@@ -82,13 +79,7 @@ public class CreatePublicProfile extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.IDProf);
         imageView.setImageResource(R.drawable.bee1);
         Upload_Button = (Button) findViewById(R.id.upload_Button);
-        setContact = (Button) findViewById(R.id.setcontactinfo_Button) ;
-        setContact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                contact();
-            }
-        });
+
 
         setPref.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -191,31 +182,27 @@ public class CreatePublicProfile extends AppCompatActivity {
 
     }
 
-    private void contact() {
-        new UpdateProfileAsync().execute(MainActivity.currUser.toString(),null,PublicProfileEmail_PlainText.getText().toString(),PublicProfilePhone_PlainText.getText().toString());
-        while(true){
-            if(MainActivity.done == true){
-                MainActivity.done = false;
-                UpdateProfileAsync.connect.closeConnection();
-                break;
-            }
-        }
-    }
 
 
 
     private void sendData() {
         //Somehow store one photo and send it
-        if(gn != null && lss != null && rslt != null && hlth !=null && qn != null && hve !=null ) {
-            new EditPreferenceAsync().execute(MainActivity.currUser, rslt, hlth, hny, qn, hve, invent, lss, gn);
-            while (true) {
-                if (MainActivity.done == true) {
-                    MainActivity.done = false;
-                    EditPreferenceAsync.connect.closeConnection();
-                    break;
+        new UpdateProfileAsync().execute(MainActivity.currUser, null, PublicProfileEmail_PlainText.getText().toString(),PublicProfilePhone_PlainText.getText().toString(),rslt,hlth,hny,qn,hve,invent,lss,gn);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    if (MainActivity.done == true) {
+                        MainActivity.done = false;
+                        break;
+                    }
                 }
+                UpdateProfileAsync.connect.closeConnection();
             }
-        }
+        },1000);
+        Intent intent2CreatePublicProfile = new Intent(CreatePublicProfile.this, MainActivity2.class);
+        startActivity(intent2CreatePublicProfile);
+
     }
 
     private void openGallery() {

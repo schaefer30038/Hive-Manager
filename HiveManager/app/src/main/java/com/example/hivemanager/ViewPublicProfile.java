@@ -2,11 +2,13 @@ package com.example.hivemanager;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 
 public class ViewPublicProfile extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     ImageView imageView;
+    Button back;
     TextView number,email,info;
     ArrayList<String>[] list = null;
     //static ArrayList<String>[] list = new ArrayList<String>[];
@@ -28,6 +31,13 @@ public class ViewPublicProfile extends AppCompatActivity implements AdapterView.
         imageView.setImageResource(R.drawable.bee1);
         number = (TextView) findViewById(R.id.Infonumber);
         email = (TextView)  findViewById(R.id.Infoemail);
+        back = (Button) findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                undo();
+            }
+        });
         Spinner dropdown = findViewById(R.id.hivelist);
          info = findViewById(R.id.info);
 
@@ -51,7 +61,7 @@ public class ViewPublicProfile extends AppCompatActivity implements AdapterView.
         }
             }
         },1000);
-        //DisplayProfileAsync.connect.closeConnection();
+        DisplayProfileAsync.connect.closeConnection();
 
         ArrayList<String> names = new ArrayList<String>();
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, names);
@@ -82,6 +92,12 @@ public class ViewPublicProfile extends AppCompatActivity implements AdapterView.
         },1000);
 
     }
+
+    private void undo() {
+        Intent intent2CreatePublicProfile = new Intent(ViewPublicProfile.this, MainActivity2.class);
+        startActivity(intent2CreatePublicProfile);
+    }
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
                 String print = "";
