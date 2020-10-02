@@ -8,20 +8,24 @@
 
     <TextView
         android:id="@+id/hiveInfo_TextView"
-        android:layout_width="409dp"
-        android:layout_height="141dp"
-        android:autoText="false"
-        android:background="#FFE2A2"
-        android:clickable="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFC107"
+        android:gravity="center|top"
+        android:padding="10sp"
         android:text="Hive Information"
+
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-        android:textColor="@android:color/black"
+        android:textColor="#000"
+        android:textSize="26sp"
         android:textStyle="normal|bold"
         app:autoSizeTextType="uniform"
-        app:drawableTint="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/test_TextView"
@@ -189,15 +193,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Delete Hive"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hiveInfo_TextView" />
+        app:layout_constraintStart_toEndOf="@id/editHive_Button"
+        app:layout_constraintTop_toBottomOf="@+id/hiveInfo_TextView"
+        app:layout_constraintVertical_bias="0.04" />
 
     <Button
         android:id="@+id/editHive_Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Update Hive"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/deleteHive_Button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hiveInfo_TextView" />
+        app:layout_constraintTop_toBottomOf="@+id/hiveInfo_TextView"
+        app:layout_constraintVertical_bias="0.04000002"
+        tools:layout_constraintTop_toBottomOf="@id/hiveInfo_TextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
