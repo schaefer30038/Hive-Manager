@@ -271,7 +271,8 @@ public class SQLConnection {
      * hive.
      * @param username        String for the user account
      * @param apiary          String for the apiary address of hive
-     * @param hive            String for the name of hive
+     * @param oldhive         String for the name of hive
+     * @param newhive         String for the name of hive
      * @param inspection      String for inspection result
      * @param health          String for health
      * @param honey           String for honey stores

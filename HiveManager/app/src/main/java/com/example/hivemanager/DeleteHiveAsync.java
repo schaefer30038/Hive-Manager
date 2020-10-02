@@ -4,14 +4,15 @@ import android.os.AsyncTask;
 
 public class DeleteHiveAsync extends AsyncTask<String,Void,Void> {
 
+    static boolean done = false;
+
     @Override
     protected Void doInBackground(String... strings) {
-        SQLConnection connect = new SQLConnection();
         String username = strings[0];
         String apiary = strings[1];
         String hive = strings[2];
-        connect.deleteHive(username, apiary, hive);
-        connect.closeConnection();
+        MainActivity.connection.deleteHive(username, apiary, hive);
+        done = true;
         return null;
     }
 }

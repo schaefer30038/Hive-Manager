@@ -3,6 +3,7 @@ package com.example.hivemanager;
 import android.os.AsyncTask;
 
 public class UpdateApiaryAsync extends AsyncTask<String,Void,Void> {
+    static boolean done = false;
 
     @Override
     protected Void doInBackground(String... strings) {
@@ -11,7 +12,7 @@ public class UpdateApiaryAsync extends AsyncTask<String,Void,Void> {
         String oldpiary = strings[1];
         String newpiary = strings[2];
         connect.updateApiary(username, oldpiary, newpiary);
-        connect.closeConnection();
+        done = true;
         return null;
     }
 }

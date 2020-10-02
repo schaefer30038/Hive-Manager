@@ -4,9 +4,10 @@ import android.os.AsyncTask;
 
 public class UpdateHiveAsync extends AsyncTask<String,Void,Void> {
 
+    static boolean done = false;
+
     @Override
     protected Void doInBackground(String... strings) {
-        SQLConnection connect = new SQLConnection();
         String username = strings[0];
         String apiary = strings[1];
         String oldhive = strings[2];
@@ -19,9 +20,9 @@ public class UpdateHiveAsync extends AsyncTask<String,Void,Void> {
         String equipinven = strings[9];
         int loss = Integer.parseInt(strings[10]);
         int gain = Integer.parseInt(strings[11]);
-        connect.updateHive(username, apiary, oldhive, newhive, inspection, health, honey, queenproduction, equiphive, equipinven,
+        MainActivity.connection.updateHive(username, apiary, oldhive, newhive, inspection, health, honey, queenproduction, equiphive, equipinven,
                 loss, gain);
-        connect.closeConnection();
+        done = true;
         return null;
     }
 }

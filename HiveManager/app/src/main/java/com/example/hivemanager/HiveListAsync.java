@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 
 public class HiveListAsync extends AsyncTask<String, Void, ResultSet> {
     static ResultSet rs;
+    static boolean done = false;
 
     @Override
     protected ResultSet doInBackground(String... strings) {
@@ -21,7 +22,7 @@ public class HiveListAsync extends AsyncTask<String, Void, ResultSet> {
         Boolean gain = 0 != Integer.parseInt(strings[8]);
         rs = connect.hiveList(username, inspection, health, honey, queenproduction, equiphive, equipinven,
                 loss, gain);
-        connect.closeConnection();
+        done = true;
         return rs;
     }
 

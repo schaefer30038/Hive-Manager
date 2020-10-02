@@ -4,12 +4,12 @@ import android.os.AsyncTask;
 
 public class DisplayHiveAsync extends AsyncTask<String, Void, Void> {
 
+    static boolean done = false;
     @Override
     protected Void doInBackground(String... strings) {
-        SQLConnection connect = new SQLConnection();
         String username = strings[0];
-        Hive.resultSet = connect.displayHive(username);
-        connect.closeConnection();
+        Hive.resultSet = MainActivity.connection.displayHive(username);
+        done = true;
         return null;
     }
 }

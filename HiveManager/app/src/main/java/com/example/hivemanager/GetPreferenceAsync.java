@@ -6,12 +6,13 @@ import com.mysql.jdbc.Blob;
 
 public class GetPreferenceAsync extends AsyncTask<Object,Void,Void> {
 
+    static boolean done = false;
+
     @Override
     protected Void doInBackground(Object... objects) {
-        SQLConnection connect = new SQLConnection();
         String username = (String) objects[0];
-        connect.getPreference(username);
-        connect.closeConnection();
+        MainActivity.connection.getPreference(username);
+        done = true;
         return null;
     }
 }

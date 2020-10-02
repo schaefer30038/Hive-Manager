@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import java.sql.Blob;
 
 public class SearchAccountAsync extends AsyncTask<String,Void,Void> {
+    static boolean done = false;
 
     @Override
     protected Void doInBackground(String... strings) {
@@ -12,7 +13,7 @@ public class SearchAccountAsync extends AsyncTask<String,Void,Void> {
         String username = strings[0];
         String password = strings[1];
         MainActivity.login = connect.searchAccount(username, password);
-        connect.closeConnection();
+        done = true;
         return null;
     }
 }

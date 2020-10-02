@@ -4,19 +4,17 @@ import android.os.AsyncTask;
 
 import java.sql.ResultSet;
 
-public class DisplayApiaryAsync extends AsyncTask<String, Void, ResultSet> {
+public class DisplayApiaryAsync extends AsyncTask<String, Void, Void> {
 
+    static ResultSet rs;
+    static boolean done = false;
     @Override
-    protected ResultSet doInBackground(String... strings) {
+    protected Void doInBackground(String... strings) {
         SQLConnection connect = new SQLConnection();
         String username = strings[0];
-        ResultSet rs = connect.displayApiary(username);
-        connect.closeConnection();
-        return rs;
+        rs = MainActivity.connection.displayApiary(username);
+        done = true;
+        return null;
     }
 
-    @Override
-    protected void onPostExecute(ResultSet resultSet) {
-        super.onPostExecute(resultSet);
-    }
 }

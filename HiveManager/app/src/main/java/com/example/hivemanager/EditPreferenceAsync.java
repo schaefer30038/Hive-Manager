@@ -6,9 +6,10 @@ import java.sql.ResultSet;
 
 public class EditPreferenceAsync  extends AsyncTask<String, Void, Void> {
 
+    static boolean done = false;
+
     @Override
     protected Void doInBackground(String... strings) {
-        SQLConnection connect = new SQLConnection();
         String username = strings[0];
         Boolean inspection = 0 != Integer.parseInt(strings[1]);
         Boolean health = 0 != Integer.parseInt(strings[2]);
@@ -18,9 +19,9 @@ public class EditPreferenceAsync  extends AsyncTask<String, Void, Void> {
         Boolean equipinven = 0 != Integer.parseInt(strings[6]);
         Boolean loss = 0 != Integer.parseInt(strings[7]);
         Boolean gain = 0 != Integer.parseInt(strings[8]);
-        connect.editPreference(username, inspection, health, honey, queenproduction, equiphive, equipinven,
+        MainActivity.connection.editPreference(username, inspection, health, honey, queenproduction, equiphive, equipinven,
                 loss, gain);
-        connect.closeConnection();
+        done = true;
         return null;
     }
 }

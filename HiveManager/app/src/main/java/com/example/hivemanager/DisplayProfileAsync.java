@@ -4,15 +4,16 @@ import android.os.AsyncTask;
 
 import java.sql.ResultSet;
 
-public class DisplayProfileAsync extends AsyncTask<String, Void, ResultSet> {
+public class DisplayProfileAsync extends AsyncTask<String, Void, Void> {
 
+    static ResultSet rs;
+    static boolean done = false;
     @Override
-    protected ResultSet doInBackground(String... strings) {
-        SQLConnection connect = new SQLConnection();
+    protected Void doInBackground(String... strings) {
         String username = strings[0];
-        ResultSet rs =connect.displayProfile(username);
-        connect.closeConnection();
-        return rs;
+        rs = MainActivity.connection.displayProfile(username);
+        done = true;
+        return null;
     }
 
 
