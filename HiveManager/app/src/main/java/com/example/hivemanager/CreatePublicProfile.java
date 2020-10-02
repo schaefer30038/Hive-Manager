@@ -31,7 +31,7 @@ public class CreatePublicProfile extends AppCompatActivity {
     private static String gn = "0";
     Uri imageUri;
     ImageView imageView;
-    Button Upload_Button,setPref;
+    Button Upload_Button,setPref,delt;
     CheckBox result,health,honey,queen,hiveequip,inventequip,losses,gains;
     EditText PublicProfilePhone_PlainText, PublicProfileEmail_PlainText;
     @Override
@@ -39,7 +39,7 @@ public class CreatePublicProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_public_profile);
 
-
+        delt = (Button) findViewById(R.id.del);
         PublicProfilePhone_PlainText = (EditText) findViewById(R.id.newAccountPhone_PlainText);
         PublicProfileEmail_PlainText = (EditText) findViewById(R.id.newAccountEmail_PlainText);
         rslt = "0";
@@ -87,7 +87,12 @@ public class CreatePublicProfile extends AppCompatActivity {
                 sendData();
             }
         });
-
+        delt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                delete();
+            }
+        });
 
         Upload_Button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -202,6 +207,25 @@ public class CreatePublicProfile extends AppCompatActivity {
         },1000);
         Intent intent2CreatePublicProfile = new Intent(CreatePublicProfile.this, MainActivity2.class);
         startActivity(intent2CreatePublicProfile);
+
+    }
+    private void delete(){
+        new UpdateProfileAsync().execute(MainActivity.currUser, null, "","","0","0","0","0","0","0","0","0");
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    if (MainActivity.done == true) {
+                        MainActivity.done = false;
+                        break;
+                    }
+                }
+                UpdateProfileAsync.connect.closeConnection();
+            }
+        },1000);
+        Intent intent2CreatePublicProfile = new Intent(CreatePublicProfile.this, MainActivity2.class);
+        startActivity(intent2CreatePublicProfile);
+
 
     }
 

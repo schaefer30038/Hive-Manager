@@ -81,11 +81,6 @@ public class ViewPublicProfile extends AppCompatActivity implements AdapterView.
                 for (int j = 0; j < list[0].size(); j++) {
                     adapter.add(list[2].get(j));
                 }
-                for (int i = 0; i < list.length; i++) {
-
-                        System.out.println(list[i]);
-
-                }
                 //Print data
 
             }
