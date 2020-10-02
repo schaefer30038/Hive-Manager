@@ -16,12 +16,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/honey_top"
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/honeycomb_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/apiaryInfo_TextView" />
+
+    <ImageView
+        android:id="@+id/honey_bot"
+        android:layout_width="510dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/honeycomb_bot"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/apiaryInfo_TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFC107"
+        android:background="#feaf3f"
 
+        android:fontFamily="casual"
         android:gravity="center|top"
         android:padding="10sp"
         android:text="Select an Apiary"
@@ -41,6 +60,11 @@
         android:id="@+id/addApiary_Button"
         android:layout_width="402dp"
         android:layout_height="64dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
         android:text="Add a new Apiary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
