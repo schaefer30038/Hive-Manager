@@ -30,11 +30,18 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         ManageHive_Button.setOnClickListener(this);
         CreatePublicProfile_Button.setOnClickListener(this);
         viewProfile_Button.setOnClickListener(this);
+        ManageApiaries_Button.setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View v) {
         switch(v.getId()){
+            case R.id.ManageApiaries_Button:
+                Intent intent2Apiary = new Intent(MainActivity2.this, Apiary.class);
+                startActivity(intent2Apiary);
+                break;
+
             case R.id.Logout_Button:
                 Intent intent2MainActivity = new Intent(MainActivity2.this, MainActivity.class);
                 startActivity(intent2MainActivity);
