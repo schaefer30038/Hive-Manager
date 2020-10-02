@@ -61,7 +61,7 @@
         android:id="@+id/setHivepref_Button"
         android:layout_width="179dp"
         android:layout_height="45dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:background="@color/honey"
         android:text="Update Profile"
         app:layout_constraintEnd_toEndOf="parent"
@@ -126,7 +126,8 @@
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/setHivepref_Button" />
+        app:layout_constraintTop_toBottomOf="@+id/setHivepref_Button"
+        app:layout_constraintVertical_bias="0.552" />
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -223,6 +224,14 @@
 
 
     </ScrollView>
+
+    <Button
+        android:id="@+id/del"
+        android:layout_width="75dp"
+        android:layout_height="48dp"
+        android:text="Delete"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,19 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ViewPublicProfile">
+    <View
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_liquid_cheese2" />
+
+    <ImageView
+        android:id="@+id/Wave_Extension"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/honey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/Wave_Img"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="120dp"
+        android:src="@drawable/ic_wave"
+        app:layout_constraintTop_toTopOf="@id/Wave_Extension"
+        tools:layout_editor_absoluteX="0dp" />
 
     <TextView
         android:id="@+id/profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFC107"
+        android:background="@color/honey"
+        android:fontFamily="casual"
 
         android:gravity="center|top"
         android:padding="10sp"
         android:text="Public Profile"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         android:textColor="#000"
-        android:textSize="26sp"
+        android:textSize="50dp"
         android:textStyle="normal|bold"
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="parent"
