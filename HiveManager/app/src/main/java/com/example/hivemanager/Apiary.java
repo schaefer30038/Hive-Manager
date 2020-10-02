@@ -20,6 +20,8 @@ public class Apiary extends AppCompatActivity implements View.OnClickListener {
     TextView apiaryInfo_TextView;
     Button addApiary_Button;
     ListView listView;
+    static boolean SELECT_APIARY;
+
 
     static String getApiaryName;
     @Override
@@ -68,6 +70,7 @@ public class Apiary extends AppCompatActivity implements View.OnClickListener {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(Apiary.this, "clicked item: "+position+" "+arrayList.get(position).toString(), Toast.LENGTH_SHORT).show(); // Solely to demonstrate it works.
                 Intent intent2apiarySettings = new Intent(Apiary.this, ApiarySettings.class);
+                SELECT_APIARY = true;
                 getApiaryName = arrayList.get(position).toString();
                 startActivity(intent2apiarySettings);
             }
@@ -80,6 +83,7 @@ public class Apiary extends AppCompatActivity implements View.OnClickListener {
         switch(v.getId()){
             case R.id.addApiary_Button:
                 Intent intent2ApiarySettings = new Intent(Apiary.this, ApiarySettings.class);
+                SELECT_APIARY = false;
                 getApiaryName = "";
                 startActivity(intent2ApiarySettings);
                 break;
