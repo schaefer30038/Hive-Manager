@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class ViewPublicProfile extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     ImageView imageView;
     Button back;
-    TextView number,email,info;
+    TextView number,email,info,user;
     ArrayList<String>[] list = null;
     //static ArrayList<String>[] list = new ArrayList<String>[];
     @Override
@@ -31,6 +31,9 @@ public class ViewPublicProfile extends AppCompatActivity implements AdapterView.
         imageView.setImageResource(R.drawable.bee1);
         number = (TextView) findViewById(R.id.Infonumber);
         email = (TextView)  findViewById(R.id.Infoemail);
+        user = (TextView)findViewById(R.id.user);
+        user.setText(MainActivity.currUser);
+        user.setEnabled(false);
         back = (Button) findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +63,7 @@ public class ViewPublicProfile extends AppCompatActivity implements AdapterView.
             e.printStackTrace();
         }
             }
-        },1000);
+        },2000);
         DisplayProfileAsync.connect.closeConnection();
 
         ArrayList<String> names = new ArrayList<String>();
