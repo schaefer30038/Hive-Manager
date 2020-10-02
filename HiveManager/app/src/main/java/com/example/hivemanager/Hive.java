@@ -26,7 +26,9 @@ import java.util.ArrayList;
 public class Hive extends AppCompatActivity implements View.OnClickListener {
     Button addHive_Button;
     ListView listView;
-    public static final String EXTRA_TEXT = "com.example.application.Hive.EXTRA_TEXT";
+    public static final String EXTRA_TEXT_HIVE = "com.example.application.Hive.EXTRA_TEXT_HIVE";
+    public static final String EXTRA_TEXT_APIARY = "com.example.application.Hive.EXTRA_TEXT_APIARY";
+
     static ResultSet resultSet;
 
     @Override
@@ -39,7 +41,6 @@ public class Hive extends AppCompatActivity implements View.OnClickListener {
 
         addHive_Button.setOnClickListener(this);
 
-
         final ArrayList<String> arrayList = new ArrayList<>();
         final ArrayList<HiveObject> hiveList = new ArrayList<>();
         new DisplayHiveAsync().execute(MainActivity.currUser);
@@ -47,29 +48,8 @@ public class Hive extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void run(){
             }
-        },1000);
+        },3000);
 
-        // Create a loop, adding all hive entries into this list. This
-        // will add them all in a list.
-        arrayList.add("testing");
-        arrayList.add("this");
-        arrayList.add("thing");
-        arrayList.add("because");
-        arrayList.add("it");
-        arrayList.add("won't");
-        arrayList.add("freaking");
-        arrayList.add("work");
-        arrayList.add("some");
-        arrayList.add("of");
-        arrayList.add("the");
-        arrayList.add("times");
-        arrayList.add("so");
-        arrayList.add("please");
-        arrayList.add("work");
-        arrayList.add("this");
-        arrayList.add("time");
-        arrayList.add("por");
-        arrayList.add("favor");
 
         if (resultSet != null) {
             try {
@@ -77,6 +57,9 @@ public class Hive extends AppCompatActivity implements View.OnClickListener {
                     HiveObject temp = new HiveObject();
                     String apiary = resultSet.getString("apiary");
                     String hive = resultSet.getString("hive");
+
+                    System.out.println(hive);
+
                     String inspection = resultSet.getString("inspection");
                     String health = resultSet.getString("health");
                     String honey = resultSet.getString("honey");
@@ -103,6 +86,12 @@ public class Hive extends AppCompatActivity implements View.OnClickListener {
         }
 
 
+        //arrayList.add("testing");
+        for(int i = 0; i < hiveList.size(); i++) {
+            arrayList.add( hiveList.get(i).getHive().toString() );
+            System.out.println(hiveList.get(i).getHive().toString());
+        }
+
 
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
 
@@ -113,7 +102,9 @@ public class Hive extends AppCompatActivity implements View.OnClickListener {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(Hive.this, "clicked item: "+position+" "+arrayList.get(position).toString(), Toast.LENGTH_SHORT).show(); // Solely to demonstrate it works.
                 Intent intent2hiveSettings = new Intent(Hive.this, HiveSettings.class);
-                intent2hiveSettings.putExtra(EXTRA_TEXT, arrayList.get(position).toString());   // Stores the name of the hive
+                intent2hiveSettings.putExtra(EXTRA_TEXT_HIVE, hiveList.get(position).getHive());   // Stores the name of the hive
+                intent2hiveSettings.putExtra(EXTRA_TEXT_APIARY, hiveList.get(position).getApiary());   // Stores the name of the apiary
+
                 startActivity(intent2hiveSettings);
             }
         });
@@ -126,7 +117,9 @@ public class Hive extends AppCompatActivity implements View.OnClickListener {
         switch(v.getId()){
             case R.id.addHive_Button:
                 Intent intent2HiveSettings = new Intent(Hive.this, HiveSettings.class);
-                intent2HiveSettings.putExtra(EXTRA_TEXT, "NULL");   // If creating a page, SENDS NULL
+                intent2HiveSettings.putExtra(EXTRA_TEXT_HIVE, "EMPTY");   // If creating a page, SENDS NULL
+                intent2HiveSettings.putExtra(EXTRA_TEXT_APIARY, "EMPTY");   // If creating a page, SENDS NULL
+
                 startActivity(intent2HiveSettings);
                 break;
         }

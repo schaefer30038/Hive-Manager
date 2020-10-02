@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class HiveSettings extends AppCompatActivity implements View.OnClickListener{
-    TextView test,hiveInfo_TextView,  username_TextView, apiary_TextView, hive_TextView, inspection_TextView, health_TextView, honey_TextView,
+    TextView hiveName_TextView, hiveApiary_TextView, hiveInfo_TextView,  username_TextView, apiary_TextView, hive_TextView, inspection_TextView, health_TextView, honey_TextView,
              queenProduction_TextView, equipHive_TextView,equipInven_TextView, loss_TextView, gain_TextView;
     Button deleteHive_Button, editHive_Button;
 
@@ -20,7 +20,8 @@ public class HiveSettings extends AppCompatActivity implements View.OnClickListe
 
         // Retrieves the hive name, or if creating a new hive, is NULL
         Intent intent = getIntent();
-        String extraString = intent.getStringExtra(Hive.EXTRA_TEXT);
+        String stringHiveName = intent.getStringExtra(Hive.EXTRA_TEXT_HIVE);
+        String stringApiaryName = intent.getStringExtra(Hive.EXTRA_TEXT_APIARY);
 
         deleteHive_Button = (Button)findViewById(R.id.deleteHive_Button);
         editHive_Button = (Button)findViewById(R.id.editHive_Button);
@@ -44,10 +45,12 @@ public class HiveSettings extends AppCompatActivity implements View.OnClickListe
         deleteHive_Button.setOnClickListener(this);
         editHive_Button.setOnClickListener(this);
 
+        hiveName_TextView = (TextView) findViewById(R.id.hiveName_TextView);
+        hiveApiary_TextView = (TextView) findViewById(R.id.hiveName_TextView);
 
+        hiveName_TextView.setText(stringHiveName);
+        hiveApiary_TextView.setText(stringApiaryName);
 
-        test = (TextView) findViewById(R.id.test_TextView);
-        test.setText(extraString);
         // var test contains the hive name which we need to add
 
 
