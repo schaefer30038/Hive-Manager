@@ -8,14 +8,15 @@ import java.util.ArrayList;
  * database 'spike_exercise'. It will be initialized when the program requires
  * access to the server
  *
- * @author
+ * @author Hyukjoon Yang
  *
  */
 public class SQLConnection {
 
     // Strings that is required to access the database server
     private final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    private final String URL = "jdbc:mysql://spike-exercise.cpahsyvhsld2.us-east-2.rds.amazonaws.com/spike_exercise?autoReconnect=true&useSSL=false";
+    private final String URL = "jdbc:mysql://spike-exercise.cpahsyvhsld2.us-east-2.rds."+
+                            "amazonaws.com/spike_exercise?autoReconnect=true&useSSL=false";
 
     // Authorized account in the databsase server
     private final String USERNAME = "admin";
@@ -76,10 +77,10 @@ public class SQLConnection {
      * @param apiary   String for the initial apiary address
      * @param email    String for the user's email
      * @param phone    String for the user's phone
-     * @return
+     * @return String that stores the result of this method
      */
-    protected String createAccount(String username, String password, Blob picture, String apiary, String email,
-                                   String phone) {
+    protected String createAccount(String username, String password, Blob picture, 
+                                   String apiary, String email, String phone) {
 
         try {
             // Query to initialize createAccount stored procedure in the database
@@ -115,7 +116,7 @@ public class SQLConnection {
      * with the password exists.
      * @param username String variable for the user account
      * @param password String variable for the password
-     * @return
+     * @return String that stores the result of this method
      */
     protected String searchAccount(String username, String password) {
         try {
@@ -151,7 +152,7 @@ public class SQLConnection {
      * @param picture  Blob format for the picture uploaded by the user
      * @param email    String for the user's email
      * @param phone    String for the user's phone
-     * @return
+     * @return String that stores the result of this method
      */
     protected String updateProfile(String username, Blob picture, String email, String phone) {
 
@@ -206,10 +207,11 @@ public class SQLConnection {
      * @param equipinven      String for equipment in inventory
      * @param loss            int for losses
      * @param gain            int for gains
-     * @return
+     * @return                String that stores the result of this method
      */
-    protected String createHive(String username, String apiary, String hive, String inspection, String health,
-                                String honey, String queenproduction, String equiphive, String equipinven, int loss, int gain) {
+    protected String createHive(String username, String apiary, String hive, String inspection, 
+                                String health, String honey, String queenproduction, 
+                                String equiphive, String equipinven, int loss, int gain) {
 
         // Execute query to call createHive stored procedure
         try {
@@ -281,10 +283,12 @@ public class SQLConnection {
      * @param equipinven      String for equipment in inventory
      * @param loss            int for losses
      * @param gain            int for gains
-     * @return
+     * @return String         String that stores the result of this method
      */
-    protected String updateHive(String username, String apiary, String oldhive, String newhive, String inspection, String health,
-                                String honey, String queenproduction, String equiphive, String equipinven, int loss, int gain) {
+    protected String updateHive(String username, String apiary, String oldhive, String newhive,
+                                String inspection, String health, String honey, 
+                                String queenproduction, String equiphive, String equipinven, 
+                                int loss, int gain) {
 
         // Execute query to call updateHive stored procedure
         try {
@@ -324,10 +328,10 @@ public class SQLConnection {
      * This method is called to delete a hive specified by the username, apiary
      * address, and the name of hive by executing a delteHive stored procedures in
      * the database.
-     * @param username String for the user's account
-     * @param apiary   String for the user's apiary address
-     * @param hive     String for the name of hive
-     * @return
+     * @param  username String for the user's account
+     * @param  apiary   String for the user's apiary address
+     * @param  hive     String for the name of hive
+     * @return String   that stores the result of this method
      */
     protected String deleteHive(String username, String apiary, String hive) {
 
@@ -361,7 +365,7 @@ public class SQLConnection {
      * belong to the user, it does not create the new apiary.
      * @param username String for the user's account
      * @param apiary   String for the new apiary address
-     * @return
+     * @return String  that stores the result of this method
      */
     protected String createApiary(String username, String apiary) {
         try {
@@ -395,7 +399,7 @@ public class SQLConnection {
      * @param username  String for the user account
      * @param oldpiary  String for the original name of apiary
      * @param newapiary String for the new name of apiary
-     * @return
+     * @return String   that stores the result of this method
      */
     protected String updateApiary(String username, String oldpiary, String newapiary) {
         try {
@@ -427,7 +431,7 @@ public class SQLConnection {
      * This method is called when the user deletes the user's apiary.
      * @param username String for the user account
      * @param apiary   String for the user apiary
-     * @return
+     * @return String  that stores the result of this method
      */
     protected String deleteApiary(String username, String apiary) {
         try {
@@ -664,6 +668,15 @@ public class SQLConnection {
         }
     }
 
+    /**
+	 * This method is executed to display full information of a specific hive chosen
+	 * by the user.
+	 * 
+	 * @param username String for the user account
+	 * @param apiary   String for the apiary address
+	 * @param hive     String for the name of the hive
+	 * @return ResultSet that stores data of the hive
+	 */
     protected ResultSet displaySpecificHive(String username, String apiary, String hive) {
         try {
             cstmt = conn.prepareCall("call displaySpecificHive(?, ?, ?, ?);");
@@ -685,7 +698,14 @@ public class SQLConnection {
         }
         return null;
     }
-
+    
+    /**
+	 * This method is called to convert ResultSet into an array of arrayLists.
+	 * The first row will be filled with the column names of the ResultSet.
+	 *
+	 * @param rs ResultSet that stores the data
+	 * @return Array of Arraylist that stores the data of ResultSet
+	 */
     protected ArrayList<String>[] hiveSelectedInfo(ResultSet rs) {
 
         try {
@@ -693,12 +713,15 @@ public class SQLConnection {
             int numCol = rsmd.getColumnCount();
 
             ArrayList<String>[] result = new ArrayList[numCol];
-
+            
+            // Initialize array of arraylists
             for (int i = 0; i < numCol; i++) {
                 result[i] = new ArrayList<String>();
+                // Fill first row by column names
                 result[i].add(rsmd.getColumnName(i + 1));
             }
-
+            
+            // Write data in the array
             while (rs.next()) {
                 for (int i = 1; i <= numCol; i++) {
                     result[i - 1].add(rs.getString(i));
