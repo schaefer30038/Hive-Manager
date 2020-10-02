@@ -734,30 +734,4 @@ public class SQLConnection {
         }
 
     }
-     /**
-      * This method is called when the user updates both profile and preference of information
-      * of hives.
-      * @param username String for the user account
-      * @param picture 		Blob for the picture type
-      * @param email   		String for email
-      * @param phone   		String for phone
-      * @param inspection  	Boolan for display
-      * @param health		Boolan for display
-      * @param honey		Boolan for display
-      * @param queenproduction	Boolan for display
-      * @param equiphive	Boolan for display
-      * @param equipinven	Boolan for display
-      * @param loss		Boolan for display
-      * @param gain		Boolan for display
-      */
-     protected void updateFullProfile(String username, Blob picture, String email, 
-				      String phone, boolean inspection,
-				      boolean health, boolean honey, boolean queenproduction, 
-				      boolean equiphive, boolean equipinven, boolean loss, 
-				      boolean gain) {
-		
-		editPreference(username, inspection, health, honey, queenproduction, equiphive, 
-			       equipinven, loss, gain);
-		updateProfile(username, picture, email, phone);
-     }
 }
