@@ -271,8 +271,7 @@ public class SQLConnection {
      * hive.
      * @param username        String for the user account
      * @param apiary          String for the apiary address of hive
-     * @param oldhive         String for the name of hive
-     * @param newhive         String for the name of hive
+     * @param hive            String for the name of hive
      * @param inspection      String for inspection result
      * @param health          String for health
      * @param honey           String for honey stores
@@ -663,5 +662,28 @@ public class SQLConnection {
 
         }
     }
+
+    protected ResultSet displaySpecificHive(String username, String apiary, String hive) {
+        try {
+            cstmt = conn.prepareCall("call displaySpecificHive(?, ?, ?, ?);");
+            cstmt.setString(1, username);
+            cstmt.setString(2, apiary);
+            cstmt.setString(3, hive);
+            cstmt.registerOutParameter(4, Types.VARCHAR);
+
+            ResultSet rs = cstmt.executeQuery();
+
+            String status = cstmt.getString(4);
+            if (status.equals("Success")) {
+                return rs;
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            System.out.println("displaySpecificHive: " + e.getMessage());
+        }
+        return null;
+    }
+
 
 }
