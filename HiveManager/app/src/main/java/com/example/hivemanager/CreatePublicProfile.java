@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -14,9 +15,19 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import java.sql.SQLException;
+
 public class CreatePublicProfile extends AppCompatActivity {
     private static final int PICK_IMAGE = 100;
-    private static boolean  rslt,hlth,hny,qn,hve,invent,lss,gn = false;
+
+    private static String rslt = "0";
+    private static String hlth = "0";
+    private static String hny = "0";
+    private static String qn = "0";
+    private static String hve = "0";
+    private static String invent = "0";
+    private static String lss =  "0";
+    private static String gn = "0";
     Uri imageUri;
     ImageView imageView;
     Button Upload_Button,Create_Profile;
@@ -28,10 +39,45 @@ public class CreatePublicProfile extends AppCompatActivity {
         setContentView(R.layout.activity_create_public_profile);
 
 
-
-        PublicProfileAddress_PlainText = (EditText) findViewById(R.id.newAccountAddress_PlainText);
         PublicProfilePhone_PlainText = (EditText) findViewById(R.id.newAccountPhone_PlainText);
         PublicProfileEmail_PlainText = (EditText) findViewById(R.id.newAccountEmail_PlainText);
+
+
+
+
+        rslt = "0";
+        hlth = "0";
+        hny = "0";
+        qn = "0";
+        hve = "0";
+        invent = "0";
+        lss =  "0";
+        gn = "0";
+        new DisplayProfileAsync().execute(MainActivity.currUser);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run(){
+        while(true){
+            if(DisplayProfileAsync.rs != null){
+                break;
+            }
+        }
+        try {
+            while (DisplayProfileAsync.rs.next()) {
+                PublicProfileEmail_PlainText.setText(DisplayProfileAsync.rs.getString("email"));
+                PublicProfilePhone_PlainText.setText(DisplayProfileAsync.rs.getString("phone"));
+                PublicProfileEmail_PlainText.setEnabled(false);
+                PublicProfilePhone_PlainText.setEnabled(false);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }    }
+        },1000);
+
+        //DisplayProfileAsync.connect.closeConnection();
+
+
+
         imageView = (ImageView) findViewById(R.id.IDProf);
         imageView.setImageResource(R.drawable.bee1);
         Upload_Button = (Button) findViewById(R.id.upload_Button);
@@ -56,88 +102,103 @@ public class CreatePublicProfile extends AppCompatActivity {
         inventequip = findViewById(R.id.equipmentInvent);
         losses = findViewById(R.id.loss);
         gains = findViewById(R.id.gain);
+
+
+
         result.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(result.isChecked()){
-                    rslt = true;
+                    rslt = "1";
                 }
+                else rslt = "0";
             }
         });
         health.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(health.isChecked()){
-                    hlth = true;
+                    hlth = "1";
                 }
+                else hlth = "0";
             }
         });
         queen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(queen.isChecked()){
-                    qn = true;
+                    qn = "1";
                 }
+                else qn = "0";
             }
         });
         honey.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(honey.isChecked()){
-                    hny = true;
+                    hny = "1";
                 }
+                else hny = "0";
             }
         });
         hiveequip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(hiveequip.isChecked()){
-                    hve = true;
+                    hve = "1";
                 }
+                else hve = "0";
             }
         });
         inventequip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(inventequip.isChecked()){
-                    invent = true;
+                    invent = "1";
                 }
+                else invent = "0";
             }
         });
         losses.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(losses.isChecked()){
-                    lss = true;
+                    //System.out.println("FUck me in the ass");
+                    lss = "1";
                 }
+                else lss = "0";
             }
         });
         gains.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(gains.isChecked()){
-                    gn = true;
+                    gn = "1";
                 }
+                else gn = "0";
             }
         });
     }
 
     private void sendData() {
 
-        AlertDialog.Builder b = new AlertDialog.Builder(CreatePublicProfile.this);
         //Somehow store one photo and send it
-        String phone = PublicProfilePhone_PlainText.getText().toString();
-        String email = PublicProfileEmail_PlainText.getText().toString();
-        String adr = PublicProfileAddress_PlainText.getText().toString();
+        if(gn != null && lss != null && rslt != null && hlth !=null && qn != null && hve !=null ) {
+            new EditPreferenceAsync().execute(MainActivity.currUser, rslt, hlth, hny, qn, hve, invent, lss, gn);
+            while (true) {
+                if (MainActivity.done == true) {
+                    MainActivity.done = false;
+                    break;
+                }
+            }
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    EditPreferenceAsync.connect.closeConnection();
+                }
+            },1000);
 
-        //use bool values and pass to backend
-        if(!( adr.equals("") || phone.equals("") || email.equals("") ||email.equals("Email Address") || adr.equals("Apiary Address") || phone.equals("Phone Number") )){
-            //Display Error
-            // somehow send image as well??
-            // then pass data to backend
-            //send data to backend and go back to login page
-
-        }
+        } //use bool values and pass to backend
     }
 
     private void openGallery() {
