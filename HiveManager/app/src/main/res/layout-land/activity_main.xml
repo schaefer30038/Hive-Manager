@@ -6,73 +6,134 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/Login_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
-        android:layout_marginStart="24dp"
-        android:text="Login"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoginPassword_PlainText" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_liquid_cheese2" />
 
-    <Button
-        android:id="@+id/CreateNewAccount_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="56dp"
-        android:text="Create a new account"
+    <ImageView
+        android:id="@+id/Wave_Extension"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/honey"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Login_Button" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/Wave_Img"
+        android:layout_width="360dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_wave"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Wave_Extension" />
+
+
+    <ImageView
+        android:id="@+id/wave_Img"
+        android:layout_width="360dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="336dp"
+        android:layout_marginStart="336dp"
+        android:src="@drawable/ic_wave"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Wave_Extension" />
+
+    <ImageView
+        android:id="@+id/wave_Img2"
+        android:layout_width="360dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="506dp"
+        android:layout_marginStart="506dp"
+        android:src="@drawable/ic_wave"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Wave_Extension" />
 
     <TextView
-        android:id="@+id/CreateNewAccount_TextView"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginStart="24dp"
-        android:text="Create a new account"
-        app:layout_constraintBottom_toTopOf="@+id/CreateNewAccount_Button"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/LoginPassword_PlainText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
-        android:layout_marginStart="24dp"
-        android:ems="12"
-        android:hint="Enter Password"
-        android:inputType="textPassword"
-        android:selectAllOnFocus="true"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LogicUsername_PlainText" />
+        android:fontFamily="casual"
+        android:text="Hive Manager"
+        android:textColor="@android:color/black"
+        android:textSize="50dp"
+        app:layout_constraintBottom_toBottomOf="@id/Wave_Img"
+        app:layout_constraintEnd_toEndOf="@id/Wave_Extension"
+        app:layout_constraintStart_toStartOf="@id/Wave_Extension"
+        app:layout_constraintTop_toTopOf="@id/Wave_Extension"
+        app:layout_constraintVertical_bias="0.13" />
 
     <TextView
         android:id="@+id/Logic_TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
-        android:text="Login"
+        android:text="Existing users"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.36"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.45" />
+
+    <TextView
+        android:id="@+id/CreateNewAccount_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="First time here?"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@id/CreateNewAccount_Button"
+        app:layout_constraintStart_toStartOf="@id/CreateNewAccount_Button" />
 
     <EditText
         android:id="@+id/LogicUsername_PlainText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
-        android:layout_marginStart="24dp"
         android:ems="12"
         android:hint="Enter Username"
         android:inputType="textPersonName"
         android:selectAllOnFocus="true"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Logic_TextView" />
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toStartOf="@id/Logic_TextView"
+        app:layout_constraintTop_toBottomOf="@id/Logic_TextView" />
+
+    <EditText
+        android:id="@+id/LoginPassword_PlainText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="12"
+        android:hint="Enter Password"
+        android:inputType="textPassword"
+        android:selectAllOnFocus="true"
+        app:layout_constraintStart_toStartOf="@id/LogicUsername_PlainText"
+        app:layout_constraintTop_toBottomOf="@+id/LogicUsername_PlainText" />
+
+    <Button
+        android:id="@+id/CreateNewAccount_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/honey"
+        android:padding="8sp"
+        android:text="Create a new account"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.74"
+        app:layout_constraintStart_toEndOf="@id/Login_Button"
+        app:layout_constraintTop_toBottomOf="@id/Wave_Img"
+        app:layout_constraintVertical_bias="0.13999999" />
+
+    <Button
+        android:id="@+id/Login_Button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/honey"
+        android:text="Login"
+        app:layout_constraintEnd_toEndOf="@id/LoginPassword_PlainText"
+        app:layout_constraintStart_toStartOf="@id/LoginPassword_PlainText"
+        app:layout_constraintTop_toBottomOf="@+id/LoginPassword_PlainText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
