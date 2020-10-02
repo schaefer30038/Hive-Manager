@@ -12,7 +12,12 @@ public class UpdateApiaryAsync extends AsyncTask<String,Void,Void> {
         String oldpiary = strings[1];
         String newpiary = strings[2];
         connect.updateApiary(username, oldpiary, newpiary);
-        MainActivity.done = true;
         return null;
+    }
+
+    @Override
+    protected void onPostExecute(Void aVoid) {
+        super.onPostExecute(aVoid);
+        MainActivity.done = true;
     }
 }
