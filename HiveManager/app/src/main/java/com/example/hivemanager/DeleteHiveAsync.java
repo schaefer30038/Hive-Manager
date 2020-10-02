@@ -11,7 +11,12 @@ public class DeleteHiveAsync extends AsyncTask<String,Void,Void> {
         String apiary = strings[1];
         String hive = strings[2];
         connect.deleteHive(username, apiary, hive);
-        MainActivity.done = true;
         return null;
+    }
+
+    @Override
+    protected void onPostExecute(Void aVoid) {
+        super.onPostExecute(aVoid);
+        MainActivity.done = true;
     }
 }
