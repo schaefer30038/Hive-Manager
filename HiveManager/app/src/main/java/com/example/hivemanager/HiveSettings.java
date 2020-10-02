@@ -71,6 +71,7 @@ public class HiveSettings extends AppCompatActivity implements View.OnClickListe
             System.out.println("SECOND CHECK");
 
 
+
             new DisplaySpecificHiveAsync().execute(MainActivity.currUser, Hive.apiaryName, stringHiveName);
 
             while(true) {
@@ -153,6 +154,14 @@ public class HiveSettings extends AppCompatActivity implements View.OnClickListe
 
             case R.id.deleteHive_Button:
                 // TODO DON'T FORGET TO DELETE THE HIVE
+                new DeleteHiveAsync().execute(MainActivity.currUser, Hive.apiaryName, stringHiveName);
+                while(true){
+                    if(MainActivity.done == true){
+                        MainActivity.done = false;
+                        break;
+                    }
+                }
+
                 break;
 
             case R.id.editHive_Button:
