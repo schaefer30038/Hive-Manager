@@ -27,7 +27,9 @@ public class Hive extends AppCompatActivity implements View.OnClickListener {
     Button addHive_Button;
     ListView listView;
     public static final String EXTRA_TEXT_HIVE = "com.example.application.Hive.EXTRA_TEXT_HIVE";
-    public static final String EXTRA_TEXT_APIARY = "com.example.application.Hive.EXTRA_TEXT_APIARY";
+    static String apiaryName;
+    static boolean SELECT_BUTTON;
+
 
 
     @Override
@@ -45,22 +47,17 @@ public class Hive extends AppCompatActivity implements View.OnClickListener {
         new DisplayHiveAsync().execute(MainActivity.currUser);
 
         while(true) {
-            if (MainActivity.done) {
-                MainActivity.done = false;
+            if (DisplayHiveAsync.rs != null) {
                 break;
             }
         }
-        System.out.println("ASDASD");
-        ResultSet resultSet = DisplayApiaryAsync.rs;
+        ResultSet resultSet = DisplayHiveAsync.rs;
         if (resultSet != null) {
             try {
                 while (resultSet.next()) {
                     HiveObject temp = new HiveObject();
                     String apiary = resultSet.getString("apiary");
                     String hive = resultSet.getString("hive");
-
-                    System.out.println(hive);
-
                     String inspection = resultSet.getString("inspection");
                     String health = resultSet.getString("health");
                     String honey = resultSet.getString("honey");
@@ -86,10 +83,10 @@ public class Hive extends AppCompatActivity implements View.OnClickListener {
             }
         }
 
+        DisplayHiveAsync.connect.closeConnection();
         //arrayList.add("testing");
         for(int i = 0; i < hiveList.size(); i++) {
             arrayList.add( hiveList.get(i).getHive().toString() );
-            System.out.println(hiveList.get(i).getHive().toString());
         }
 
 
@@ -103,8 +100,8 @@ public class Hive extends AppCompatActivity implements View.OnClickListener {
                 Toast.makeText(Hive.this, "clicked item: "+position+" "+arrayList.get(position).toString(), Toast.LENGTH_SHORT).show(); // Solely to demonstrate it works.
                 Intent intent2hiveSettings = new Intent(Hive.this, HiveSettings.class);
                 intent2hiveSettings.putExtra(EXTRA_TEXT_HIVE, hiveList.get(position).getHive());   // Stores the name of the hive
-                intent2hiveSettings.putExtra(EXTRA_TEXT_APIARY, hiveList.get(position).getApiary());   // Stores the name of the apiary
-
+                apiaryName = hiveList.get(position).getApiary();
+                SELECT_BUTTON = true;
                 startActivity(intent2hiveSettings);
             }
         });
@@ -116,8 +113,9 @@ public class Hive extends AppCompatActivity implements View.OnClickListener {
         switch(v.getId()){
             case R.id.addHive_Button:
                 Intent intent2HiveSettings = new Intent(Hive.this, HiveSettings.class);
-                intent2HiveSettings.putExtra(EXTRA_TEXT_HIVE, "EMPTY");   // If creating a page, SENDS NULL
-                intent2HiveSettings.putExtra(EXTRA_TEXT_APIARY, "EMPTY");   // If creating a page, SENDS NULL
+                intent2HiveSettings.putExtra(EXTRA_TEXT_HIVE, "CHANGE ME");   // If creating a page, SENDS NULL
+                apiaryName = "";
+                SELECT_BUTTON = false;
 
                 startActivity(intent2HiveSettings);
                 break;
