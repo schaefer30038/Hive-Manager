@@ -10,6 +10,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.os.Handler;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
@@ -18,12 +19,15 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Hive extends AppCompatActivity implements View.OnClickListener {
     Button addHive_Button;
     ListView listView;
     public static final String EXTRA_TEXT = "com.example.application.Hive.EXTRA_TEXT";
+    static ResultSet resultSet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +41,16 @@ public class Hive extends AppCompatActivity implements View.OnClickListener {
 
 
         final ArrayList<String> arrayList = new ArrayList<>();
+        final ArrayList<HiveObject> hiveList = new ArrayList<>();
+        new DisplayHiveAsync().execute(MainActivity.currUser);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run(){
+            }
+        },1000);
 
         // Create a loop, adding all hive entries into this list. This
         // will add them all in a list.
-
         arrayList.add("testing");
         arrayList.add("this");
         arrayList.add("thing");
@@ -60,6 +70,37 @@ public class Hive extends AppCompatActivity implements View.OnClickListener {
         arrayList.add("time");
         arrayList.add("por");
         arrayList.add("favor");
+
+        if (resultSet != null) {
+            try {
+                while (resultSet.next()) {
+                    HiveObject temp = new HiveObject();
+                    String apiary = resultSet.getString("apiary");
+                    String hive = resultSet.getString("hive");
+                    String inspection = resultSet.getString("inspection");
+                    String health = resultSet.getString("health");
+                    String honey = resultSet.getString("honey");
+                    String queenproduction = resultSet.getString("queenproduction");
+                    String equiphive = resultSet.getString("equiphive");
+                    String equipinven = resultSet.getString("equipinven");
+                    int loss = resultSet.getInt("loss");
+                    int gain = resultSet.getInt("gain");
+                    temp.setApiary(apiary);
+                    temp.setHive(hive);
+                    temp.setInspection(inspection);
+                    temp.setHealth(health);
+                    temp.setHoney(honey);
+                    temp.setQueenProduction(queenproduction);
+                    temp.setEquipHive(equiphive);
+                    temp.setEquipInven(equipinven);
+                    temp.setLoss(loss);
+                    temp.setGain(gain);
+                    hiveList.add(temp);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
 
 
 

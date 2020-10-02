@@ -2,21 +2,14 @@ package com.example.hivemanager;
 
 import android.os.AsyncTask;
 
-import java.sql.ResultSet;
-
-public class DisplayHiveAsync extends AsyncTask<String, Void, ResultSet> {
+public class DisplayHiveAsync extends AsyncTask<String, Void, Void> {
 
     @Override
-    protected ResultSet doInBackground(String... strings) {
+    protected Void doInBackground(String... strings) {
         SQLConnection connect = new SQLConnection();
         String username = strings[0];
-        ResultSet rs = connect.displayHive(username);
+        Hive.resultSet = connect.displayHive(username);
         connect.closeConnection();
-        return rs;
-    }
-
-    @Override
-    protected void onPostExecute(ResultSet resultSet) {
-        super.onPostExecute(resultSet);
+        return null;
     }
 }
