@@ -16,7 +16,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class Apiary extends AppCompatActivity {
+public class Apiary extends AppCompatActivity implements View.OnClickListener {
     TextView apiaryInfo_TextView;
     Button addApiary_Button;
     ListView listView;
@@ -32,6 +32,7 @@ public class Apiary extends AppCompatActivity {
         apiaryInfo_TextView = (TextView) findViewById(R.id.ManageApiaries_Button);
 
         addApiary_Button = (Button) findViewById(R.id.addApiary_Button);
+        addApiary_Button.setOnClickListener(this);
 
         final ArrayList<String> arrayList = new ArrayList<>();
 
@@ -72,11 +73,18 @@ public class Apiary extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-
     }
+
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()){
+            case R.id.addApiary_Button:
+                Intent intent2ApiarySettings = new Intent(Apiary.this, ApiarySettings.class);
+                getApiaryName = "";
+                startActivity(intent2ApiarySettings);
+                break;
+        }
+    }
+
+
 }
