@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import java.sql.ResultSet;
 
 public class HiveListAsync extends AsyncTask<String, Void, ResultSet> {
+    static ResultSet rs;
 
     @Override
     protected ResultSet doInBackground(String... strings) {
@@ -18,7 +19,7 @@ public class HiveListAsync extends AsyncTask<String, Void, ResultSet> {
         Boolean equipinven = 0 != Integer.parseInt(strings[6]);
         Boolean loss = 0 != Integer.parseInt(strings[7]);
         Boolean gain = 0 != Integer.parseInt(strings[8]);
-        ResultSet rs = connect.hiveList(username, inspection, health, honey, queenproduction, equiphive, equipinven,
+        rs = connect.hiveList(username, inspection, health, honey, queenproduction, equiphive, equipinven,
                 loss, gain);
         connect.closeConnection();
         return rs;
