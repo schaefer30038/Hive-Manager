@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/ic_liquid_cheese2"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteY="41dp" />
 
     <ImageView
         android:id="@+id/Wave_Extension"
@@ -61,23 +61,12 @@
         android:id="@+id/setHivepref_Button"
         android:layout_width="179dp"
         android:layout_height="45dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:background="@color/honey"
-        android:text="Set Hive Info Preferences"
-        app:layout_constraintEnd_toEndOf="@+id/newAccountPhone_PlainText"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/newAccountPhone_PlainText"
-        app:layout_constraintTop_toBottomOf="@+id/newAccountPhone_PlainText" />
-    <Button
-        android:id="@+id/setcontactinfo_Button"
-        android:layout_width="179dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="24dp"
-        android:background="@color/honey"
-        android:text="Set Contact info"
-        app:layout_constraintEnd_toEndOf="@+id/newAccountEmail_PlainText"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/newAccountEmail_PlainText"
+        android:text="Update Profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newAccountEmail_PlainText" />
 
     <EditText
@@ -133,20 +122,21 @@
         android:layout_height="24dp"
         android:text="Select Hive Information"
 
+
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CreatePublicProfile_Button"
-        app:layout_constraintVertical_bias="0.692" />
+        app:layout_constraintTop_toBottomOf="@+id/setHivepref_Button" />
 
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="354dp"
         android:layout_height="229dp"
+        android:layout_marginBottom="24dp"
         android:isScrollContainer="false"
         app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent">
 
 
