@@ -61,7 +61,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="400dp"
+        android:layout_width="380dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -69,13 +69,25 @@
         app:layout_constraintStart_toEndOf="@id/Wave_Extension"
         app:layout_constraintHorizontal_bias="1">
 
-        <Button
-            android:id="@+id/ManageApiaries_Button"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:layout_weight="1"
-            android:background="#FFCC00"
-            android:text="Manage Apiaries" />
+            app:cardCornerRadius="10dp"
+            android:elevation="10dp">
+
+            <Button
+                android:id="@+id/ManageApiaries_Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/apiary"
+                android:fontFamily="@font/alegreya_black"
+                android:text="Manage Apiaries"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/blank1"
@@ -84,13 +96,26 @@
             android:text="Manage Apiaries"
             android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/ManageHive_Button"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#FFCC00"
-            android:text="Manage Hives"
-            tools:layout_weight="1" />
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="10dp"
+            android:elevation="10dp">
+
+            <Button
+                android:id="@+id/ManageHive_Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/hive"
+                android:fontFamily="@font/alegreya_black"
+                android:text="Manage Hives"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:layout_weight="1" />
+
+        </androidx.cardview.widget.CardView>
+
 
         <TextView
             android:id="@+id/blank2"
@@ -99,13 +124,26 @@
             android:text="Manage Apiaries"
             android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/ViewPublicProfile_Button"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="#FFCC00"
-            android:text="View Public Profile"
-            tools:layout_weight="1" />
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="10dp"
+            android:elevation="10dp">
+
+            <Button
+                android:id="@+id/ViewPublicProfile_Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/public_profile"
+                android:fontFamily="@font/alegreya_black"
+                android:text="View Public Profile"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:layout_weight="1" />
+
+        </androidx.cardview.widget.CardView>
+
 
         <TextView
             android:id="@+id/blank3"
@@ -114,13 +152,25 @@
             android:text="Manage Apiaries"
             android:layout_weight="1" />
 
-        <Button
-            android:id="@+id/CreatePublicProfile_Button"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:layout_weight="1"
-            android:background="#FFCC00"
-            android:text="Create Public Profile" />
+            app:cardCornerRadius="10dp"
+            android:elevation="10dp">
+
+            <Button
+                android:id="@+id/CreatePublicProfile_Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/gear"
+                android:fontFamily="@font/alegreya_black"
+                android:text="Create Public Profile"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/blank4"
@@ -134,8 +184,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#FFCC00"
-            android:text="Logout"
+            android:background="@drawable/half_button"
+            android:fontFamily="@font/alegreya_black"
+            android:text="Logout "
+            android:textSize="16sp"
+            android:textStyle="bold"
             tools:layout_editor_absoluteX="176dp"
             tools:layout_editor_absoluteY="619dp" />
 
