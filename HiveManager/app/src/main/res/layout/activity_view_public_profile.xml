@@ -105,31 +105,8 @@
 
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Infoadr"
-        app:layout_constraintVertical_bias="0.777" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/adr"
-        android:layout_width="178dp"
-        android:layout_height="22dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="12dp"
-        android:text="Apiary Address:"
-        android:textColor="#000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Infonumber"/>
-
-
-    <TextView
-        android:id="@+id/Infoadr"
-        android:layout_width="178dp"
-        android:layout_height="22dp"
-        android:text=""
-        android:textColor="#000"
-        app:layout_constraintStart_toStartOf="@+id/adr"
-        app:layout_constraintTop_toBottomOf="@+id/adr" />
 
     <ScrollView
         android:id="@+id/scrollView3"
@@ -149,9 +126,17 @@
 
             <ListView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tasda" />
+            </ListView>
         </LinearLayout>
     </ScrollView>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
