@@ -71,9 +71,17 @@ public class CreateNewAccount extends AppCompatActivity {
 
             // TODO: accMade will be "Success" if account is created and it will be "Exist" if account already exists
             //if(accMade.equals("Success")) {
+
+            while(!MainActivity.done){
+                if(MainActivity.done){
+                    MainActivity.done = false;
+                    break;
+                }
+            }
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run(){
+                    System.out.print(accMade);
                     if(accMade.equals("Success")){
                         Intent intent2Main = new Intent(CreateNewAccount.this, MainActivity.class);
                         startActivity(intent2Main);
