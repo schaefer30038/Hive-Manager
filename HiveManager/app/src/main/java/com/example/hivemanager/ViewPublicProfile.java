@@ -64,7 +64,7 @@ public class ViewPublicProfile extends AppCompatActivity implements AdapterView.
         }
             }
         },2000);
-        DisplayProfileAsync.connect.closeConnection();
+//        DisplayProfileAsync.connect.closeConnection();
 
         ArrayList<String> names = new ArrayList<String>();
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, names);
@@ -87,7 +87,7 @@ public class ViewPublicProfile extends AppCompatActivity implements AdapterView.
                 //Print data
 
             }
-        },1000);
+        },2000);
 
     }
 
