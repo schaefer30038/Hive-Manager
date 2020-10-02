@@ -10,7 +10,10 @@
         android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/ic_liquid_cheese2" />
+        android:background="@drawable/ic_liquid_cheese2"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
     <ImageView
         android:id="@+id/Wave_Extension"
         android:layout_width="match_parent"
@@ -54,16 +57,27 @@
         app:layout_constraintTop_toBottomOf="@id/upload_Button"
         app:layout_constraintVertical_bias="0.2" />
 
-
     <Button
-        android:id="@+id/CreatePublicProfile_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:id="@+id/setHivepref_Button"
+        android:layout_width="179dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="24dp"
         android:background="@color/honey"
-        android:text="Create Profile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="Set Hive Info Preferences"
+        app:layout_constraintEnd_toEndOf="@+id/newAccountPhone_PlainText"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/newAccountPhone_PlainText"
+        app:layout_constraintTop_toBottomOf="@+id/newAccountPhone_PlainText" />
+    <Button
+        android:id="@+id/setcontactinfo_Button"
+        android:layout_width="179dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/honey"
+        android:text="Set Contact info"
+        app:layout_constraintEnd_toEndOf="@+id/newAccountEmail_PlainText"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/newAccountEmail_PlainText"
         app:layout_constraintTop_toBottomOf="@+id/newAccountEmail_PlainText" />
 
     <EditText
@@ -90,15 +104,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IDProf" />
 
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/honey"
-        android:gravity="center|top"
         android:fontFamily="casual"
+        android:gravity="center|top"
         android:padding="10sp"
-        android:text="Create Public Profile"
+        android:text="Update Public Profile"
 
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         android:textColor="#000"
@@ -111,7 +126,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
-
 
     <TextView
         android:id="@+id/textView2"

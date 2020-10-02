@@ -100,36 +100,16 @@
         android:id="@+id/hive"
         android:layout_width="159dp"
         android:layout_height="24dp"
+        android:layout_marginBottom="68dp"
         android:text="Hive Information"
+
+
         app:layout_constraintBottom_toTopOf="@+id/scrollView3"
-
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Infoadr"
-        app:layout_constraintVertical_bias="0.777" />
 
-    <TextView
-        android:id="@+id/adr"
-        android:layout_width="178dp"
-        android:layout_height="22dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="12dp"
-        android:text="Apiary Address:"
-        android:textColor="#000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Infonumber"/>
-
-
-    <TextView
-        android:id="@+id/Infoadr"
-        android:layout_width="178dp"
-        android:layout_height="22dp"
-        android:text=""
-        android:textColor="#000"
-        app:layout_constraintStart_toStartOf="@+id/adr"
-        app:layout_constraintTop_toBottomOf="@+id/adr" />
+        app:layout_constraintTop_toBottomOf="@+id/Infonumber"
+        app:layout_constraintVertical_bias="0.733" />
 
     <ScrollView
         android:id="@+id/scrollView3"
@@ -139,19 +119,36 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Infonumber"
+        app:layout_constraintTop_toBottomOf="@+id/hivelist"
         app:layout_constraintVertical_bias="0.75">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
-            <ListView
+
+            <TextView
+                android:id="@+id/info"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:text="Name\nHoney Prodcution" />
+
+
         </LinearLayout>
     </ScrollView>
+
+    <Spinner
+        android:id="@+id/hivelist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hive"
+        app:layout_constraintVertical_bias="0.609" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
