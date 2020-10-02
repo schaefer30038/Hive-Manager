@@ -12,7 +12,7 @@
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/ic_liquid_cheese2" />
+        android:background="@color/design_default_color_on_secondary" />
 
     <ImageView
         android:id="@+id/Wave_Extension"
@@ -42,17 +42,17 @@
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="60dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintBottom_toBottomOf="@id/Wave_Extension"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.068" />
+        app:layout_constraintVertical_bias="0.6" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="425dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,10 +66,9 @@
             android:text="Manage Apiaries" />
 
         <TextView
-            android:id="@+id/blank3"
+            android:id="@+id/blank1"
             android:layout_width="match_parent"
-            android:layout_height="16dp"
-            android:background="#000000"
+            android:layout_height="46dp"
             android:text="Manage Apiaries" />
 
         <Button
@@ -80,10 +79,9 @@
             android:text="Manage Hives" />
 
         <TextView
-            android:id="@+id/blank1"
+            android:id="@+id/blank2"
             android:layout_width="match_parent"
-            android:layout_height="16dp"
-            android:background="#000000"
+            android:layout_height="46dp"
             android:text="Manage Apiaries" />
 
         <Button
@@ -94,10 +92,9 @@
             android:text="View Public Profile" />
 
         <TextView
-            android:id="@+id/blank4"
+            android:id="@+id/blank3"
             android:layout_width="match_parent"
-            android:layout_height="16dp"
-            android:background="#000000"
+            android:layout_height="46dp"
             android:text="Manage Apiaries" />
 
         <Button
@@ -108,10 +105,9 @@
             android:text="Create Public Profile" />
 
         <TextView
-            android:id="@+id/blank"
+            android:id="@+id/blank4"
             android:layout_width="match_parent"
-            android:layout_height="16dp"
-            android:background="#000000"
+            android:layout_height="46dp"
             android:text="Manage Apiaries" />
 
         <Button
@@ -122,6 +118,7 @@
             android:text="Logout"
             tools:layout_editor_absoluteX="176dp"
             tools:layout_editor_absoluteY="619dp" />
+
 
     </LinearLayout>
 
