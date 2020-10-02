@@ -21,6 +21,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.io.File;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button Login_Button, CreateNewAccount_Button;
     EditText LogicUsername_PlainText,LoginPassword_PlainText;
     //ImageView uploadPicture_ImageView;
-
+    private ProgressBar prog;
     // TODO: this string will be "Username" if account doesn't exist
     // it will be "Password" if the password is wrong and if username and password is a match it will return "Match"
     static String login;
@@ -48,9 +49,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         Login_Button = (Button) findViewById(R.id.Login_Button);
         CreateNewAccount_Button = (Button) findViewById(R.id.CreateNewAccount_Button);
-
+        prog = (ProgressBar)findViewById(R.id.progressBar) ;
+        prog.setVisibility(View.GONE);
 
 
 
@@ -70,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.Login_Button:
+                prog.setVisibility(View.VISIBLE);
                 sendData();
                 break;
             case R.id.CreateNewAccount_Button:
@@ -84,6 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         currUser = LogicUsername_PlainText.getText().toString();
         String pass = LoginPassword_PlainText.getText().toString();
         new SearchAccountAsync().execute(currUser, CreateNewAccount.encoder(pass));
+
         //TODO check value of LOGIN
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -93,14 +98,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     startActivity(intent2Main);
                 }
                 else if(login.equals("Username")){
+                    prog.setVisibility(View.GONE);
                     Toast.makeText(MainActivity.this,"Account doesn't exist",Toast.LENGTH_SHORT).show();
                 }
                 else{
+                    prog.setVisibility(View.GONE);
                     // Show error
                     Toast.makeText(MainActivity.this,"Incorrect Login Credentials",Toast.LENGTH_SHORT).show();
                 }
+                prog.setVisibility(View.GONE);
             }
-        },1000);
+        },3000);
+
     }
     public static void hideKeyboard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
