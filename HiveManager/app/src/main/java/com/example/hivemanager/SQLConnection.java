@@ -519,7 +519,6 @@ public class SQLConnection {
         // Finalize the sql statement
         sql = sql.concat(" from userhive uh where uh.username = \"" + username + "\";");
 
-        System.out.println(sql);
         try {
             // Execute the query
             rs = stmt.executeQuery(sql);
