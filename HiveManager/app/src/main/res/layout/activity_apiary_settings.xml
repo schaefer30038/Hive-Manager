@@ -6,11 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".ApiarySettings">
 
-    <ListView
-        android:id="@+id/listview"
+    <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/portrait_honeycomb" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.87" />
 
 
     <TextView
@@ -39,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create new Apiary"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/delete_Apiary_Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/nameOfApiary_TextView"
         app:layout_constraintTop_toBottomOf="@id/apiaryInfo_TextView"
@@ -49,22 +58,18 @@
         android:id="@+id/delete_Apiary_Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="76dp"
-        android:layout_marginRight="76dp"
         android:text="Delete Apiary"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/updateApiary_Button"
+        app:layout_constraintStart_toStartOf="@id/createApiary_Button"
         app:layout_constraintTop_toBottomOf="@+id/createApiary_Button" />
 
     <Button
         android:id="@+id/updateApiary_Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="76dp"
-        android:layout_marginRight="76dp"
         android:text="Update Apiary"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/listview"
+        app:layout_constraintStart_toStartOf="@id/delete_Apiary_Button"
         app:layout_constraintTop_toBottomOf="@+id/delete_Apiary_Button" />
 
     <EditText
@@ -79,7 +84,7 @@
         app:layout_constraintHorizontal_bias="0.13"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.32999998">
+        app:layout_constraintVertical_bias="0.26">
 
     </EditText>
 </androidx.constraintlayout.widget.ConstraintLayout>
