@@ -9,7 +9,7 @@
     tools:context=".MainActivity2">
 
     <View
-        android:id="@+id/view"
+        android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/design_default_color_on_secondary" />

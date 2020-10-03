@@ -81,7 +81,7 @@ public class ViewPublicProfile extends AppCompatActivity implements AdapterView.
                 }
                     list = SQLConnection.hiveSelectedInfo(GetPreferenceAsync.rs);
 
-                for (int j = 0; j < list[0].size(); j++) {
+                for (int j = 1; j < list[0].size(); j++) {
                     adapter.add(list[2].get(j));
                 }
                 //Print data
@@ -130,7 +130,7 @@ public class ViewPublicProfile extends AppCompatActivity implements AdapterView.
                     }
                     //print = (print + list[i].get(0) + ": ");
 
-                    print = print + list[i].get(position) + "\n";
+                    print = print + list[i].get(position+1) + "\n";
                 }
         info.setText(print);
 
