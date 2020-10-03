@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HiveSettings">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/landscape_honeycomb" />
+
+    <TextView
+        android:id="@+id/hiveInfo_TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:gravity="center|top"
+        android:padding="10sp"
+
+        android:text="Hive Information"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+        android:textColor="#000"
+        android:textSize="26sp"
+        android:textStyle="normal|bold"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.04000002" />
+
+    <ScrollView
+        android:layout_width="266dp"
+        android:layout_height="266dp"
+        android:isScrollContainer="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.68"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hiveInfo_TextView"
+        app:layout_constraintVertical_bias="0.3">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/apiary_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:hint="Apiary:"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/hive_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:hint="Hive Name:"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/inspection_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:hint="Inspection:"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/health_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:hint="Health:"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/honey_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:hint="Honey"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/queenProduction_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:hint="Queen Production:"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/equipHive_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:hint="Equipment on the Hive:"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/equipInven_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:hint="Equipment in Inventory:"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/loss_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:hint="Loss:"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/gain_TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:hint="Gain:"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/deleteHive_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Delete Hive"
+        app:layout_constraintStart_toStartOf="@id/editHive_Button"
+        app:layout_constraintTop_toBottomOf="@id/editHive_Button" />
+
+    <Button
+        android:id="@+id/editHive_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Hive"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hiveInfo_TextView"
+        app:layout_constraintVertical_bias="0.19"
+        tools:layout_constraintTop_toBottomOf="@id/hiveInfo_TextView" />
+
+    <Button
+        android:id="@+id/createHive_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Create new Hive"
+        app:layout_constraintStart_toStartOf="@id/deleteHive_Button"
+        app:layout_constraintTop_toBottomOf="@id/deleteHive_Button" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
