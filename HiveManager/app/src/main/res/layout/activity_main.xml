@@ -9,7 +9,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/ic_liquid_cheese2" />
+        android:background="@drawable/hive_wallpaper" />
 
     <ImageView
         android:id="@+id/Wave_Extension"
@@ -37,6 +37,7 @@
         android:text="Hive Manager"
         android:textColor="@android:color/black"
         android:textSize="50dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/Wave_Extension"
         app:layout_constraintEnd_toEndOf="@id/Wave_Extension"
         app:layout_constraintStart_toStartOf="@id/Wave_Extension"

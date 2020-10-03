@@ -56,11 +56,11 @@
         android:layout_height="146dp"
 
 
-        android:layout_marginTop="56dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile"
+        app:layout_constraintVertical_bias="0.04"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -71,19 +71,18 @@
         android:gravity="center|top"
         android:text="Username"
         android:textColor="#000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/IDProf"
+        app:layout_constraintStart_toStartOf="@id/IDProf"
         app:layout_constraintTop_toBottomOf="@+id/IDProf" />
 
     <TextView
         android:id="@+id/number"
         android:layout_width="178dp"
         android:layout_height="22dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="32dp"
         android:text="Phone Number:"
         android:textColor="#000"
+        app:layout_constraintBottom_toTopOf="@id/hive"
+        app:layout_constraintEnd_toStartOf="@id/email"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user" />
 
@@ -101,14 +100,14 @@
         android:layout_width="178dp"
         android:layout_height="22dp"
 
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
         android:text="E-Mail:"
 
         android:textColor="#000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user" />
+        app:layout_constraintStart_toEndOf="@id/number"
+        app:layout_constraintTop_toTopOf="@id/number" />
 
     <TextView
         android:id="@+id/Infoemail"
@@ -135,8 +134,7 @@
 
         app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Infonumber"
-        app:layout_constraintVertical_bias="0.771" />
+        app:layout_constraintTop_toBottomOf="@+id/Infonumber" />
 
     <ScrollView
         android:id="@+id/scrollView3"
@@ -147,7 +145,8 @@
 
         app:layout_constraintStart_toStartOf="parent"
 
-        app:layout_constraintVertical_bias="0.75">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.97">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -171,11 +170,11 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toTopOf="@+id/scrollView3"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/scrollView3"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@id/scrollView3"
 
-        app:layout_constraintVertical_bias="0.609" />
+        />
 
     <Button
         android:id="@+id/back"
